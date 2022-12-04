@@ -1,4 +1,5 @@
-﻿using BookLibrary_ADONET.ViewModels;
+﻿using BookLibrary_ADONET.Abstractions;
+using BookLibrary_ADONET.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,19 +14,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace BookLibrary_ADONET.Views
+namespace BookLibrary_ADONET.ViewModels
 {
     /// <summary>
-    /// Interaction logic for LibrarianWindow.xaml
+    /// Interaction logic for ShowAllBooksWindow.xaml
     /// </summary>
-    public partial class LibrarianWindow : Window
+    public partial class ShowAllBooksWindow : Window
     {
-        public LibrarianWindow()
+
+        public ShowAllBooksWindow()
         {
             InitializeComponent();
-            var mw = new LibrarianWindowViewModel();
-            mw.libwindow = this;
-            this.DataContext = mw;
+            var bookRepo = new BookRepository();
+            var showallviewmodel = new ShowAllBooksViewModel(bookRepo);
+            this.DataContext = showallviewmodel;
         }
     }
 }

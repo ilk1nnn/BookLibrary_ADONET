@@ -1,5 +1,4 @@
-﻿using BookLibrary_ADONET.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,16 +15,13 @@ using System.Windows.Shapes;
 namespace BookLibrary_ADONET.Views
 {
     /// <summary>
-    /// Interaction logic for LibrarianWindow.xaml
+    /// Interaction logic for DeleteBookWindow.xaml
     /// </summary>
-    public partial class LibrarianWindow : Window
+    public partial class DeleteBookWindow : Window
     {
-        public LibrarianWindow()
+        public DeleteBookWindow()
         {
             InitializeComponent();
-            var mw = new LibrarianWindowViewModel();
-            mw.libwindow = this;
-            this.DataContext = mw;
         }
     }
 }

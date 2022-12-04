@@ -33,6 +33,13 @@ namespace BookLibrary_ADONET.ViewModels
                 libwindow.Close();
             });
 
+            InsertNewBookCommand = new RelayCommand(d =>
+            {
+                var insertbook = new InsertNewBookWindow(); 
+                insertbook.Show();
+                libwindow.Close();
+            });
+
         }
 
     }

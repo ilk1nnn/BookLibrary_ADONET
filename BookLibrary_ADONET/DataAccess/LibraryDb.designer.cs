@@ -69,10 +69,49 @@ namespace BookLibrary_ADONET.DataAccess
     partial void InsertTheme(Theme instance);
     partial void UpdateTheme(Theme instance);
     partial void DeleteTheme(Theme instance);
+    partial void InsertAuthor1(Author1 instance);
+    partial void UpdateAuthor1(Author1 instance);
+    partial void DeleteAuthor1(Author1 instance);
+    partial void InsertBook1(Book1 instance);
+    partial void UpdateBook1(Book1 instance);
+    partial void DeleteBook1(Book1 instance);
+    partial void InsertCategory1(Category1 instance);
+    partial void UpdateCategory1(Category1 instance);
+    partial void DeleteCategory1(Category1 instance);
+    partial void InsertDepartment1(Department1 instance);
+    partial void UpdateDepartment1(Department1 instance);
+    partial void DeleteDepartment1(Department1 instance);
+    partial void InsertFaculty1(Faculty1 instance);
+    partial void UpdateFaculty1(Faculty1 instance);
+    partial void DeleteFaculty1(Faculty1 instance);
+    partial void InsertGroup1(Group1 instance);
+    partial void UpdateGroup1(Group1 instance);
+    partial void DeleteGroup1(Group1 instance);
+    partial void InsertLib1(Lib1 instance);
+    partial void UpdateLib1(Lib1 instance);
+    partial void DeleteLib1(Lib1 instance);
+    partial void InsertPress1(Press1 instance);
+    partial void UpdatePress1(Press1 instance);
+    partial void DeletePress1(Press1 instance);
+    partial void InsertS_Card1(S_Card1 instance);
+    partial void UpdateS_Card1(S_Card1 instance);
+    partial void DeleteS_Card1(S_Card1 instance);
+    partial void InsertStudent1(Student1 instance);
+    partial void UpdateStudent1(Student1 instance);
+    partial void DeleteStudent1(Student1 instance);
+    partial void InsertT_Card1(T_Card1 instance);
+    partial void UpdateT_Card1(T_Card1 instance);
+    partial void DeleteT_Card1(T_Card1 instance);
+    partial void InsertTeacher1(Teacher1 instance);
+    partial void UpdateTeacher1(Teacher1 instance);
+    partial void DeleteTeacher1(Teacher1 instance);
+    partial void InsertTheme1(Theme1 instance);
+    partial void UpdateTheme1(Theme1 instance);
+    partial void DeleteTheme1(Theme1 instance);
     #endregion
 		
 		public LibraryDbDataContext() : 
-				base(global::BookLibrary_ADONET.Properties.Settings.Default.LibraryConnectionString, mappingSource)
+				base(global::BookLibrary_ADONET.Properties.Settings.Default.LibraryConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -204,6 +243,110 @@ namespace BookLibrary_ADONET.DataAccess
 				return this.GetTable<Theme>();
 			}
 		}
+		
+		public System.Data.Linq.Table<Author1> Author1s
+		{
+			get
+			{
+				return this.GetTable<Author1>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Book1> Book1s
+		{
+			get
+			{
+				return this.GetTable<Book1>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Category1> Category1s
+		{
+			get
+			{
+				return this.GetTable<Category1>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Department1> Department1s
+		{
+			get
+			{
+				return this.GetTable<Department1>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Faculty1> Faculty1s
+		{
+			get
+			{
+				return this.GetTable<Faculty1>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Group1> Group1s
+		{
+			get
+			{
+				return this.GetTable<Group1>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Lib1> Lib1s
+		{
+			get
+			{
+				return this.GetTable<Lib1>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Press1> Press1s
+		{
+			get
+			{
+				return this.GetTable<Press1>();
+			}
+		}
+		
+		public System.Data.Linq.Table<S_Card1> S_Card1s
+		{
+			get
+			{
+				return this.GetTable<S_Card1>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Student1> Student1s
+		{
+			get
+			{
+				return this.GetTable<Student1>();
+			}
+		}
+		
+		public System.Data.Linq.Table<T_Card1> T_Card1s
+		{
+			get
+			{
+				return this.GetTable<T_Card1>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Teacher1> Teacher1s
+		{
+			get
+			{
+				return this.GetTable<Teacher1>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Theme1> Theme1s
+		{
+			get
+			{
+				return this.GetTable<Theme1>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Authors")]
@@ -220,6 +363,8 @@ namespace BookLibrary_ADONET.DataAccess
 		
 		private EntitySet<Book> _Books;
 		
+		private EntitySet<Book1> _Book1s;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -235,6 +380,7 @@ namespace BookLibrary_ADONET.DataAccess
 		public Author()
 		{
 			this._Books = new EntitySet<Book>(new Action<Book>(this.attach_Books), new Action<Book>(this.detach_Books));
+			this._Book1s = new EntitySet<Book1>(new Action<Book1>(this.attach_Book1s), new Action<Book1>(this.detach_Book1s));
 			OnCreated();
 		}
 		
@@ -311,6 +457,19 @@ namespace BookLibrary_ADONET.DataAccess
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Author_Book1", Storage="_Book1s", ThisKey="Id", OtherKey="Id_Author")]
+		public EntitySet<Book1> Book1s
+		{
+			get
+			{
+				return this._Book1s;
+			}
+			set
+			{
+				this._Book1s.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -338,6 +497,18 @@ namespace BookLibrary_ADONET.DataAccess
 		}
 		
 		private void detach_Books(Book entity)
+		{
+			this.SendPropertyChanging();
+			entity.Author = null;
+		}
+		
+		private void attach_Book1s(Book1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Author = this;
+		}
+		
+		private void detach_Book1s(Book1 entity)
 		{
 			this.SendPropertyChanging();
 			entity.Author = null;
@@ -374,6 +545,10 @@ namespace BookLibrary_ADONET.DataAccess
 		
 		private EntitySet<T_Card> _T_Cards;
 		
+		private EntitySet<S_Card1> _S_Card1s;
+		
+		private EntitySet<T_Card1> _T_Card1s;
+		
 		private EntityRef<Author> _Author;
 		
 		private EntityRef<Category> _Category;
@@ -381,6 +556,14 @@ namespace BookLibrary_ADONET.DataAccess
 		private EntityRef<Press> _Press;
 		
 		private EntityRef<Theme> _Theme;
+		
+		private EntityRef<Author1> _Author1;
+		
+		private EntityRef<Category1> _Category1;
+		
+		private EntityRef<Press1> _Press1;
+		
+		private EntityRef<Theme1> _Theme1;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -412,10 +595,16 @@ namespace BookLibrary_ADONET.DataAccess
 		{
 			this._S_Cards = new EntitySet<S_Card>(new Action<S_Card>(this.attach_S_Cards), new Action<S_Card>(this.detach_S_Cards));
 			this._T_Cards = new EntitySet<T_Card>(new Action<T_Card>(this.attach_T_Cards), new Action<T_Card>(this.detach_T_Cards));
+			this._S_Card1s = new EntitySet<S_Card1>(new Action<S_Card1>(this.attach_S_Card1s), new Action<S_Card1>(this.detach_S_Card1s));
+			this._T_Card1s = new EntitySet<T_Card1>(new Action<T_Card1>(this.attach_T_Card1s), new Action<T_Card1>(this.detach_T_Card1s));
 			this._Author = default(EntityRef<Author>);
 			this._Category = default(EntityRef<Category>);
 			this._Press = default(EntityRef<Press>);
 			this._Theme = default(EntityRef<Theme>);
+			this._Author1 = default(EntityRef<Author1>);
+			this._Category1 = default(EntityRef<Category1>);
+			this._Press1 = default(EntityRef<Press1>);
+			this._Theme1 = default(EntityRef<Theme1>);
 			OnCreated();
 		}
 		
@@ -510,7 +699,7 @@ namespace BookLibrary_ADONET.DataAccess
 			{
 				if ((this._Id_Themes != value))
 				{
-					if (this._Theme.HasLoadedOrAssignedValue)
+					if ((this._Theme.HasLoadedOrAssignedValue || this._Theme1.HasLoadedOrAssignedValue))
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -534,7 +723,7 @@ namespace BookLibrary_ADONET.DataAccess
 			{
 				if ((this._Id_Category != value))
 				{
-					if (this._Category.HasLoadedOrAssignedValue)
+					if ((this._Category.HasLoadedOrAssignedValue || this._Category1.HasLoadedOrAssignedValue))
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -558,7 +747,7 @@ namespace BookLibrary_ADONET.DataAccess
 			{
 				if ((this._Id_Author != value))
 				{
-					if (this._Author.HasLoadedOrAssignedValue)
+					if ((this._Author.HasLoadedOrAssignedValue || this._Author1.HasLoadedOrAssignedValue))
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -582,7 +771,7 @@ namespace BookLibrary_ADONET.DataAccess
 			{
 				if ((this._Id_Press != value))
 				{
-					if (this._Press.HasLoadedOrAssignedValue)
+					if ((this._Press.HasLoadedOrAssignedValue || this._Press1.HasLoadedOrAssignedValue))
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -658,6 +847,32 @@ namespace BookLibrary_ADONET.DataAccess
 			set
 			{
 				this._T_Cards.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book_S_Card1", Storage="_S_Card1s", ThisKey="Id", OtherKey="Id_Book")]
+		public EntitySet<S_Card1> S_Card1s
+		{
+			get
+			{
+				return this._S_Card1s;
+			}
+			set
+			{
+				this._S_Card1s.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book_T_Card1", Storage="_T_Card1s", ThisKey="Id", OtherKey="Id_Book")]
+		public EntitySet<T_Card1> T_Card1s
+		{
+			get
+			{
+				return this._T_Card1s;
+			}
+			set
+			{
+				this._T_Card1s.Assign(value);
 			}
 		}
 		
@@ -797,6 +1012,142 @@ namespace BookLibrary_ADONET.DataAccess
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Author1_Book", Storage="_Author1", ThisKey="Id_Author", OtherKey="Id", IsForeignKey=true)]
+		public Author1 Author1
+		{
+			get
+			{
+				return this._Author1.Entity;
+			}
+			set
+			{
+				Author1 previousValue = this._Author1.Entity;
+				if (((previousValue != value) 
+							|| (this._Author1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Author1.Entity = null;
+						previousValue.Books.Remove(this);
+					}
+					this._Author1.Entity = value;
+					if ((value != null))
+					{
+						value.Books.Add(this);
+						this._Id_Author = value.Id;
+					}
+					else
+					{
+						this._Id_Author = default(int);
+					}
+					this.SendPropertyChanged("Author1");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Category1_Book", Storage="_Category1", ThisKey="Id_Category", OtherKey="Id", IsForeignKey=true)]
+		public Category1 Category1
+		{
+			get
+			{
+				return this._Category1.Entity;
+			}
+			set
+			{
+				Category1 previousValue = this._Category1.Entity;
+				if (((previousValue != value) 
+							|| (this._Category1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Category1.Entity = null;
+						previousValue.Books.Remove(this);
+					}
+					this._Category1.Entity = value;
+					if ((value != null))
+					{
+						value.Books.Add(this);
+						this._Id_Category = value.Id;
+					}
+					else
+					{
+						this._Id_Category = default(int);
+					}
+					this.SendPropertyChanged("Category1");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Press1_Book", Storage="_Press1", ThisKey="Id_Press", OtherKey="Id", IsForeignKey=true)]
+		public Press1 Press1
+		{
+			get
+			{
+				return this._Press1.Entity;
+			}
+			set
+			{
+				Press1 previousValue = this._Press1.Entity;
+				if (((previousValue != value) 
+							|| (this._Press1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Press1.Entity = null;
+						previousValue.Books.Remove(this);
+					}
+					this._Press1.Entity = value;
+					if ((value != null))
+					{
+						value.Books.Add(this);
+						this._Id_Press = value.Id;
+					}
+					else
+					{
+						this._Id_Press = default(int);
+					}
+					this.SendPropertyChanged("Press1");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Theme1_Book", Storage="_Theme1", ThisKey="Id_Themes", OtherKey="Id", IsForeignKey=true)]
+		public Theme1 Theme1
+		{
+			get
+			{
+				return this._Theme1.Entity;
+			}
+			set
+			{
+				Theme1 previousValue = this._Theme1.Entity;
+				if (((previousValue != value) 
+							|| (this._Theme1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Theme1.Entity = null;
+						previousValue.Books.Remove(this);
+					}
+					this._Theme1.Entity = value;
+					if ((value != null))
+					{
+						value.Books.Add(this);
+						this._Id_Themes = value.Id;
+					}
+					else
+					{
+						this._Id_Themes = default(int);
+					}
+					this.SendPropertyChanged("Theme1");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -840,6 +1191,30 @@ namespace BookLibrary_ADONET.DataAccess
 			this.SendPropertyChanging();
 			entity.Book = null;
 		}
+		
+		private void attach_S_Card1s(S_Card1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Book = this;
+		}
+		
+		private void detach_S_Card1s(S_Card1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Book = null;
+		}
+		
+		private void attach_T_Card1s(T_Card1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Book = this;
+		}
+		
+		private void detach_T_Card1s(T_Card1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Book = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Categories")]
@@ -854,6 +1229,8 @@ namespace BookLibrary_ADONET.DataAccess
 		
 		private EntitySet<Book> _Books;
 		
+		private EntitySet<Book1> _Book1s;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -867,6 +1244,7 @@ namespace BookLibrary_ADONET.DataAccess
 		public Category()
 		{
 			this._Books = new EntitySet<Book>(new Action<Book>(this.attach_Books), new Action<Book>(this.detach_Books));
+			this._Book1s = new EntitySet<Book1>(new Action<Book1>(this.attach_Book1s), new Action<Book1>(this.detach_Book1s));
 			OnCreated();
 		}
 		
@@ -923,6 +1301,19 @@ namespace BookLibrary_ADONET.DataAccess
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Category_Book1", Storage="_Book1s", ThisKey="Id", OtherKey="Id_Category")]
+		public EntitySet<Book1> Book1s
+		{
+			get
+			{
+				return this._Book1s;
+			}
+			set
+			{
+				this._Book1s.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -954,6 +1345,18 @@ namespace BookLibrary_ADONET.DataAccess
 			this.SendPropertyChanging();
 			entity.Category = null;
 		}
+		
+		private void attach_Book1s(Book1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Category = this;
+		}
+		
+		private void detach_Book1s(Book1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Category = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Departments")]
@@ -968,6 +1371,8 @@ namespace BookLibrary_ADONET.DataAccess
 		
 		private EntitySet<Teacher> _Teachers;
 		
+		private EntitySet<Teacher1> _Teacher1s;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -981,6 +1386,7 @@ namespace BookLibrary_ADONET.DataAccess
 		public Department()
 		{
 			this._Teachers = new EntitySet<Teacher>(new Action<Teacher>(this.attach_Teachers), new Action<Teacher>(this.detach_Teachers));
+			this._Teacher1s = new EntitySet<Teacher1>(new Action<Teacher1>(this.attach_Teacher1s), new Action<Teacher1>(this.detach_Teacher1s));
 			OnCreated();
 		}
 		
@@ -1037,6 +1443,19 @@ namespace BookLibrary_ADONET.DataAccess
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Department_Teacher1", Storage="_Teacher1s", ThisKey="Id", OtherKey="Id_Dep")]
+		public EntitySet<Teacher1> Teacher1s
+		{
+			get
+			{
+				return this._Teacher1s;
+			}
+			set
+			{
+				this._Teacher1s.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1068,6 +1487,18 @@ namespace BookLibrary_ADONET.DataAccess
 			this.SendPropertyChanging();
 			entity.Department = null;
 		}
+		
+		private void attach_Teacher1s(Teacher1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Department = this;
+		}
+		
+		private void detach_Teacher1s(Teacher1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Department = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Faculties")]
@@ -1082,6 +1513,8 @@ namespace BookLibrary_ADONET.DataAccess
 		
 		private EntitySet<Group> _Groups;
 		
+		private EntitySet<Group1> _Group1s;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1095,6 +1528,7 @@ namespace BookLibrary_ADONET.DataAccess
 		public Faculty()
 		{
 			this._Groups = new EntitySet<Group>(new Action<Group>(this.attach_Groups), new Action<Group>(this.detach_Groups));
+			this._Group1s = new EntitySet<Group1>(new Action<Group1>(this.attach_Group1s), new Action<Group1>(this.detach_Group1s));
 			OnCreated();
 		}
 		
@@ -1151,6 +1585,19 @@ namespace BookLibrary_ADONET.DataAccess
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Faculty_Group1", Storage="_Group1s", ThisKey="Id", OtherKey="Id_Faculty")]
+		public EntitySet<Group1> Group1s
+		{
+			get
+			{
+				return this._Group1s;
+			}
+			set
+			{
+				this._Group1s.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1182,6 +1629,18 @@ namespace BookLibrary_ADONET.DataAccess
 			this.SendPropertyChanging();
 			entity.Faculty = null;
 		}
+		
+		private void attach_Group1s(Group1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Faculty = this;
+		}
+		
+		private void detach_Group1s(Group1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Faculty = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Groups")]
@@ -1198,7 +1657,11 @@ namespace BookLibrary_ADONET.DataAccess
 		
 		private EntitySet<Student> _Students;
 		
+		private EntitySet<Student1> _Student1s;
+		
 		private EntityRef<Faculty> _Faculty;
+		
+		private EntityRef<Faculty1> _Faculty1;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1215,7 +1678,9 @@ namespace BookLibrary_ADONET.DataAccess
 		public Group()
 		{
 			this._Students = new EntitySet<Student>(new Action<Student>(this.attach_Students), new Action<Student>(this.detach_Students));
+			this._Student1s = new EntitySet<Student1>(new Action<Student1>(this.attach_Student1s), new Action<Student1>(this.detach_Student1s));
 			this._Faculty = default(EntityRef<Faculty>);
+			this._Faculty1 = default(EntityRef<Faculty1>);
 			OnCreated();
 		}
 		
@@ -1270,7 +1735,7 @@ namespace BookLibrary_ADONET.DataAccess
 			{
 				if ((this._Id_Faculty != value))
 				{
-					if (this._Faculty.HasLoadedOrAssignedValue)
+					if ((this._Faculty.HasLoadedOrAssignedValue || this._Faculty1.HasLoadedOrAssignedValue))
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -1293,6 +1758,19 @@ namespace BookLibrary_ADONET.DataAccess
 			set
 			{
 				this._Students.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Group_Student1", Storage="_Student1s", ThisKey="Id", OtherKey="Id_Group")]
+		public EntitySet<Student1> Student1s
+		{
+			get
+			{
+				return this._Student1s;
+			}
+			set
+			{
+				this._Student1s.Assign(value);
 			}
 		}
 		
@@ -1330,6 +1808,40 @@ namespace BookLibrary_ADONET.DataAccess
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Faculty1_Group", Storage="_Faculty1", ThisKey="Id_Faculty", OtherKey="Id", IsForeignKey=true)]
+		public Faculty1 Faculty1
+		{
+			get
+			{
+				return this._Faculty1.Entity;
+			}
+			set
+			{
+				Faculty1 previousValue = this._Faculty1.Entity;
+				if (((previousValue != value) 
+							|| (this._Faculty1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Faculty1.Entity = null;
+						previousValue.Groups.Remove(this);
+					}
+					this._Faculty1.Entity = value;
+					if ((value != null))
+					{
+						value.Groups.Add(this);
+						this._Id_Faculty = value.Id;
+					}
+					else
+					{
+						this._Id_Faculty = default(int);
+					}
+					this.SendPropertyChanged("Faculty1");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1361,6 +1873,18 @@ namespace BookLibrary_ADONET.DataAccess
 			this.SendPropertyChanging();
 			entity.Group = null;
 		}
+		
+		private void attach_Student1s(Student1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Group = this;
+		}
+		
+		private void detach_Student1s(Student1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Group = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Libs")]
@@ -1379,6 +1903,10 @@ namespace BookLibrary_ADONET.DataAccess
 		
 		private EntitySet<T_Card> _T_Cards;
 		
+		private EntitySet<S_Card1> _S_Card1s;
+		
+		private EntitySet<T_Card1> _T_Card1s;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1395,6 +1923,8 @@ namespace BookLibrary_ADONET.DataAccess
 		{
 			this._S_Cards = new EntitySet<S_Card>(new Action<S_Card>(this.attach_S_Cards), new Action<S_Card>(this.detach_S_Cards));
 			this._T_Cards = new EntitySet<T_Card>(new Action<T_Card>(this.attach_T_Cards), new Action<T_Card>(this.detach_T_Cards));
+			this._S_Card1s = new EntitySet<S_Card1>(new Action<S_Card1>(this.attach_S_Card1s), new Action<S_Card1>(this.detach_S_Card1s));
+			this._T_Card1s = new EntitySet<T_Card1>(new Action<T_Card1>(this.attach_T_Card1s), new Action<T_Card1>(this.detach_T_Card1s));
 			OnCreated();
 		}
 		
@@ -1484,6 +2014,32 @@ namespace BookLibrary_ADONET.DataAccess
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lib_S_Card1", Storage="_S_Card1s", ThisKey="Id", OtherKey="Id_Lib")]
+		public EntitySet<S_Card1> S_Card1s
+		{
+			get
+			{
+				return this._S_Card1s;
+			}
+			set
+			{
+				this._S_Card1s.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lib_T_Card1", Storage="_T_Card1s", ThisKey="Id", OtherKey="Id_Lib")]
+		public EntitySet<T_Card1> T_Card1s
+		{
+			get
+			{
+				return this._T_Card1s;
+			}
+			set
+			{
+				this._T_Card1s.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1527,6 +2083,30 @@ namespace BookLibrary_ADONET.DataAccess
 			this.SendPropertyChanging();
 			entity.Lib = null;
 		}
+		
+		private void attach_S_Card1s(S_Card1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Lib = this;
+		}
+		
+		private void detach_S_Card1s(S_Card1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Lib = null;
+		}
+		
+		private void attach_T_Card1s(T_Card1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Lib = this;
+		}
+		
+		private void detach_T_Card1s(T_Card1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Lib = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Press")]
@@ -1541,6 +2121,8 @@ namespace BookLibrary_ADONET.DataAccess
 		
 		private EntitySet<Book> _Books;
 		
+		private EntitySet<Book1> _Book1s;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1554,6 +2136,7 @@ namespace BookLibrary_ADONET.DataAccess
 		public Press()
 		{
 			this._Books = new EntitySet<Book>(new Action<Book>(this.attach_Books), new Action<Book>(this.detach_Books));
+			this._Book1s = new EntitySet<Book1>(new Action<Book1>(this.attach_Book1s), new Action<Book1>(this.detach_Book1s));
 			OnCreated();
 		}
 		
@@ -1610,6 +2193,19 @@ namespace BookLibrary_ADONET.DataAccess
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Press_Book1", Storage="_Book1s", ThisKey="Id", OtherKey="Id_Press")]
+		public EntitySet<Book1> Book1s
+		{
+			get
+			{
+				return this._Book1s;
+			}
+			set
+			{
+				this._Book1s.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1641,6 +2237,18 @@ namespace BookLibrary_ADONET.DataAccess
 			this.SendPropertyChanging();
 			entity.Press = null;
 		}
+		
+		private void attach_Book1s(Book1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Press = this;
+		}
+		
+		private void detach_Book1s(Book1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Press = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.S_Cards")]
@@ -1667,6 +2275,12 @@ namespace BookLibrary_ADONET.DataAccess
 		
 		private EntityRef<Student> _Student;
 		
+		private EntityRef<Book1> _Book1;
+		
+		private EntityRef<Lib1> _Lib1;
+		
+		private EntityRef<Student1> _Student1;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1690,6 +2304,9 @@ namespace BookLibrary_ADONET.DataAccess
 			this._Book = default(EntityRef<Book>);
 			this._Lib = default(EntityRef<Lib>);
 			this._Student = default(EntityRef<Student>);
+			this._Book1 = default(EntityRef<Book1>);
+			this._Lib1 = default(EntityRef<Lib1>);
+			this._Student1 = default(EntityRef<Student1>);
 			OnCreated();
 		}
 		
@@ -1724,7 +2341,7 @@ namespace BookLibrary_ADONET.DataAccess
 			{
 				if ((this._Id_Student != value))
 				{
-					if (this._Student.HasLoadedOrAssignedValue)
+					if ((this._Student.HasLoadedOrAssignedValue || this._Student1.HasLoadedOrAssignedValue))
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -1748,7 +2365,7 @@ namespace BookLibrary_ADONET.DataAccess
 			{
 				if ((this._Id_Book != value))
 				{
-					if (this._Book.HasLoadedOrAssignedValue)
+					if ((this._Book.HasLoadedOrAssignedValue || this._Book1.HasLoadedOrAssignedValue))
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -1812,7 +2429,7 @@ namespace BookLibrary_ADONET.DataAccess
 			{
 				if ((this._Id_Lib != value))
 				{
-					if (this._Lib.HasLoadedOrAssignedValue)
+					if ((this._Lib.HasLoadedOrAssignedValue || this._Lib1.HasLoadedOrAssignedValue))
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -1927,6 +2544,108 @@ namespace BookLibrary_ADONET.DataAccess
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book1_S_Card", Storage="_Book1", ThisKey="Id_Book", OtherKey="Id", IsForeignKey=true)]
+		public Book1 Book1
+		{
+			get
+			{
+				return this._Book1.Entity;
+			}
+			set
+			{
+				Book1 previousValue = this._Book1.Entity;
+				if (((previousValue != value) 
+							|| (this._Book1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Book1.Entity = null;
+						previousValue.S_Cards.Remove(this);
+					}
+					this._Book1.Entity = value;
+					if ((value != null))
+					{
+						value.S_Cards.Add(this);
+						this._Id_Book = value.Id;
+					}
+					else
+					{
+						this._Id_Book = default(int);
+					}
+					this.SendPropertyChanged("Book1");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lib1_S_Card", Storage="_Lib1", ThisKey="Id_Lib", OtherKey="Id", IsForeignKey=true)]
+		public Lib1 Lib1
+		{
+			get
+			{
+				return this._Lib1.Entity;
+			}
+			set
+			{
+				Lib1 previousValue = this._Lib1.Entity;
+				if (((previousValue != value) 
+							|| (this._Lib1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Lib1.Entity = null;
+						previousValue.S_Cards.Remove(this);
+					}
+					this._Lib1.Entity = value;
+					if ((value != null))
+					{
+						value.S_Cards.Add(this);
+						this._Id_Lib = value.Id;
+					}
+					else
+					{
+						this._Id_Lib = default(int);
+					}
+					this.SendPropertyChanged("Lib1");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Student1_S_Card", Storage="_Student1", ThisKey="Id_Student", OtherKey="Id", IsForeignKey=true)]
+		public Student1 Student1
+		{
+			get
+			{
+				return this._Student1.Entity;
+			}
+			set
+			{
+				Student1 previousValue = this._Student1.Entity;
+				if (((previousValue != value) 
+							|| (this._Student1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Student1.Entity = null;
+						previousValue.S_Cards.Remove(this);
+					}
+					this._Student1.Entity = value;
+					if ((value != null))
+					{
+						value.S_Cards.Add(this);
+						this._Id_Student = value.Id;
+					}
+					else
+					{
+						this._Id_Student = default(int);
+					}
+					this.SendPropertyChanged("Student1");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1966,7 +2685,11 @@ namespace BookLibrary_ADONET.DataAccess
 		
 		private EntitySet<S_Card> _S_Cards;
 		
+		private EntitySet<S_Card1> _S_Card1s;
+		
 		private EntityRef<Group> _Group;
+		
+		private EntityRef<Group1> _Group1;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1987,7 +2710,9 @@ namespace BookLibrary_ADONET.DataAccess
 		public Student()
 		{
 			this._S_Cards = new EntitySet<S_Card>(new Action<S_Card>(this.attach_S_Cards), new Action<S_Card>(this.detach_S_Cards));
+			this._S_Card1s = new EntitySet<S_Card1>(new Action<S_Card1>(this.attach_S_Card1s), new Action<S_Card1>(this.detach_S_Card1s));
 			this._Group = default(EntityRef<Group>);
+			this._Group1 = default(EntityRef<Group1>);
 			OnCreated();
 		}
 		
@@ -2062,7 +2787,7 @@ namespace BookLibrary_ADONET.DataAccess
 			{
 				if ((this._Id_Group != value))
 				{
-					if (this._Group.HasLoadedOrAssignedValue)
+					if ((this._Group.HasLoadedOrAssignedValue || this._Group1.HasLoadedOrAssignedValue))
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -2108,6 +2833,19 @@ namespace BookLibrary_ADONET.DataAccess
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Student_S_Card1", Storage="_S_Card1s", ThisKey="Id", OtherKey="Id_Student")]
+		public EntitySet<S_Card1> S_Card1s
+		{
+			get
+			{
+				return this._S_Card1s;
+			}
+			set
+			{
+				this._S_Card1s.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Group_Student", Storage="_Group", ThisKey="Id_Group", OtherKey="Id", IsForeignKey=true)]
 		public Group Group
 		{
@@ -2138,6 +2876,40 @@ namespace BookLibrary_ADONET.DataAccess
 						this._Id_Group = default(int);
 					}
 					this.SendPropertyChanged("Group");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Group1_Student", Storage="_Group1", ThisKey="Id_Group", OtherKey="Id", IsForeignKey=true)]
+		public Group1 Group1
+		{
+			get
+			{
+				return this._Group1.Entity;
+			}
+			set
+			{
+				Group1 previousValue = this._Group1.Entity;
+				if (((previousValue != value) 
+							|| (this._Group1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Group1.Entity = null;
+						previousValue.Students.Remove(this);
+					}
+					this._Group1.Entity = value;
+					if ((value != null))
+					{
+						value.Students.Add(this);
+						this._Id_Group = value.Id;
+					}
+					else
+					{
+						this._Id_Group = default(int);
+					}
+					this.SendPropertyChanged("Group1");
 				}
 			}
 		}
@@ -2173,6 +2945,18 @@ namespace BookLibrary_ADONET.DataAccess
 			this.SendPropertyChanging();
 			entity.Student = null;
 		}
+		
+		private void attach_S_Card1s(S_Card1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Student = this;
+		}
+		
+		private void detach_S_Card1s(S_Card1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Student = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.T_Cards")]
@@ -2199,6 +2983,12 @@ namespace BookLibrary_ADONET.DataAccess
 		
 		private EntityRef<Teacher> _Teacher;
 		
+		private EntityRef<Book1> _Book1;
+		
+		private EntityRef<Lib1> _Lib1;
+		
+		private EntityRef<Teacher1> _Teacher1;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -2222,6 +3012,9 @@ namespace BookLibrary_ADONET.DataAccess
 			this._Book = default(EntityRef<Book>);
 			this._Lib = default(EntityRef<Lib>);
 			this._Teacher = default(EntityRef<Teacher>);
+			this._Book1 = default(EntityRef<Book1>);
+			this._Lib1 = default(EntityRef<Lib1>);
+			this._Teacher1 = default(EntityRef<Teacher1>);
 			OnCreated();
 		}
 		
@@ -2256,7 +3049,7 @@ namespace BookLibrary_ADONET.DataAccess
 			{
 				if ((this._Id_Teacher != value))
 				{
-					if (this._Teacher.HasLoadedOrAssignedValue)
+					if ((this._Teacher.HasLoadedOrAssignedValue || this._Teacher1.HasLoadedOrAssignedValue))
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -2280,7 +3073,7 @@ namespace BookLibrary_ADONET.DataAccess
 			{
 				if ((this._Id_Book != value))
 				{
-					if (this._Book.HasLoadedOrAssignedValue)
+					if ((this._Book.HasLoadedOrAssignedValue || this._Book1.HasLoadedOrAssignedValue))
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -2344,7 +3137,7 @@ namespace BookLibrary_ADONET.DataAccess
 			{
 				if ((this._Id_Lib != value))
 				{
-					if (this._Lib.HasLoadedOrAssignedValue)
+					if ((this._Lib.HasLoadedOrAssignedValue || this._Lib1.HasLoadedOrAssignedValue))
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -2459,6 +3252,108 @@ namespace BookLibrary_ADONET.DataAccess
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book1_T_Card", Storage="_Book1", ThisKey="Id_Book", OtherKey="Id", IsForeignKey=true)]
+		public Book1 Book1
+		{
+			get
+			{
+				return this._Book1.Entity;
+			}
+			set
+			{
+				Book1 previousValue = this._Book1.Entity;
+				if (((previousValue != value) 
+							|| (this._Book1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Book1.Entity = null;
+						previousValue.T_Cards.Remove(this);
+					}
+					this._Book1.Entity = value;
+					if ((value != null))
+					{
+						value.T_Cards.Add(this);
+						this._Id_Book = value.Id;
+					}
+					else
+					{
+						this._Id_Book = default(int);
+					}
+					this.SendPropertyChanged("Book1");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lib1_T_Card", Storage="_Lib1", ThisKey="Id_Lib", OtherKey="Id", IsForeignKey=true)]
+		public Lib1 Lib1
+		{
+			get
+			{
+				return this._Lib1.Entity;
+			}
+			set
+			{
+				Lib1 previousValue = this._Lib1.Entity;
+				if (((previousValue != value) 
+							|| (this._Lib1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Lib1.Entity = null;
+						previousValue.T_Cards.Remove(this);
+					}
+					this._Lib1.Entity = value;
+					if ((value != null))
+					{
+						value.T_Cards.Add(this);
+						this._Id_Lib = value.Id;
+					}
+					else
+					{
+						this._Id_Lib = default(int);
+					}
+					this.SendPropertyChanged("Lib1");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Teacher1_T_Card", Storage="_Teacher1", ThisKey="Id_Teacher", OtherKey="Id", IsForeignKey=true)]
+		public Teacher1 Teacher1
+		{
+			get
+			{
+				return this._Teacher1.Entity;
+			}
+			set
+			{
+				Teacher1 previousValue = this._Teacher1.Entity;
+				if (((previousValue != value) 
+							|| (this._Teacher1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Teacher1.Entity = null;
+						previousValue.T_Cards.Remove(this);
+					}
+					this._Teacher1.Entity = value;
+					if ((value != null))
+					{
+						value.T_Cards.Add(this);
+						this._Id_Teacher = value.Id;
+					}
+					else
+					{
+						this._Id_Teacher = default(int);
+					}
+					this.SendPropertyChanged("Teacher1");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2496,7 +3391,11 @@ namespace BookLibrary_ADONET.DataAccess
 		
 		private EntitySet<T_Card> _T_Cards;
 		
+		private EntitySet<T_Card1> _T_Card1s;
+		
 		private EntityRef<Department> _Department;
+		
+		private EntityRef<Department1> _Department1;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2515,7 +3414,9 @@ namespace BookLibrary_ADONET.DataAccess
 		public Teacher()
 		{
 			this._T_Cards = new EntitySet<T_Card>(new Action<T_Card>(this.attach_T_Cards), new Action<T_Card>(this.detach_T_Cards));
+			this._T_Card1s = new EntitySet<T_Card1>(new Action<T_Card1>(this.attach_T_Card1s), new Action<T_Card1>(this.detach_T_Card1s));
 			this._Department = default(EntityRef<Department>);
+			this._Department1 = default(EntityRef<Department1>);
 			OnCreated();
 		}
 		
@@ -2590,7 +3491,7 @@ namespace BookLibrary_ADONET.DataAccess
 			{
 				if ((this._Id_Dep != value))
 				{
-					if (this._Department.HasLoadedOrAssignedValue)
+					if ((this._Department.HasLoadedOrAssignedValue || this._Department1.HasLoadedOrAssignedValue))
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -2613,6 +3514,19 @@ namespace BookLibrary_ADONET.DataAccess
 			set
 			{
 				this._T_Cards.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Teacher_T_Card1", Storage="_T_Card1s", ThisKey="Id", OtherKey="Id_Teacher")]
+		public EntitySet<T_Card1> T_Card1s
+		{
+			get
+			{
+				return this._T_Card1s;
+			}
+			set
+			{
+				this._T_Card1s.Assign(value);
 			}
 		}
 		
@@ -2650,6 +3564,40 @@ namespace BookLibrary_ADONET.DataAccess
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Department1_Teacher", Storage="_Department1", ThisKey="Id_Dep", OtherKey="Id", IsForeignKey=true)]
+		public Department1 Department1
+		{
+			get
+			{
+				return this._Department1.Entity;
+			}
+			set
+			{
+				Department1 previousValue = this._Department1.Entity;
+				if (((previousValue != value) 
+							|| (this._Department1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Department1.Entity = null;
+						previousValue.Teachers.Remove(this);
+					}
+					this._Department1.Entity = value;
+					if ((value != null))
+					{
+						value.Teachers.Add(this);
+						this._Id_Dep = value.Id;
+					}
+					else
+					{
+						this._Id_Dep = default(int);
+					}
+					this.SendPropertyChanged("Department1");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2681,6 +3629,18 @@ namespace BookLibrary_ADONET.DataAccess
 			this.SendPropertyChanging();
 			entity.Teacher = null;
 		}
+		
+		private void attach_T_Card1s(T_Card1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Teacher = this;
+		}
+		
+		private void detach_T_Card1s(T_Card1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Teacher = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Themes")]
@@ -2695,6 +3655,8 @@ namespace BookLibrary_ADONET.DataAccess
 		
 		private EntitySet<Book> _Books;
 		
+		private EntitySet<Book1> _Book1s;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -2708,6 +3670,7 @@ namespace BookLibrary_ADONET.DataAccess
 		public Theme()
 		{
 			this._Books = new EntitySet<Book>(new Action<Book>(this.attach_Books), new Action<Book>(this.detach_Books));
+			this._Book1s = new EntitySet<Book1>(new Action<Book1>(this.attach_Book1s), new Action<Book1>(this.detach_Book1s));
 			OnCreated();
 		}
 		
@@ -2764,6 +3727,19 @@ namespace BookLibrary_ADONET.DataAccess
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Theme_Book1", Storage="_Book1s", ThisKey="Id", OtherKey="Id_Themes")]
+		public EntitySet<Book1> Book1s
+		{
+			get
+			{
+				return this._Book1s;
+			}
+			set
+			{
+				this._Book1s.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2794,6 +3770,3454 @@ namespace BookLibrary_ADONET.DataAccess
 		{
 			this.SendPropertyChanging();
 			entity.Theme = null;
+		}
+		
+		private void attach_Book1s(Book1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Theme = this;
+		}
+		
+		private void detach_Book1s(Book1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Theme = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Authors")]
+	public partial class Author1 : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _FirstName;
+		
+		private string _LastName;
+		
+		private EntitySet<Book> _Books;
+		
+		private EntitySet<Book1> _Book1s;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnFirstNameChanging(string value);
+    partial void OnFirstNameChanged();
+    partial void OnLastNameChanging(string value);
+    partial void OnLastNameChanged();
+    #endregion
+		
+		public Author1()
+		{
+			this._Books = new EntitySet<Book>(new Action<Book>(this.attach_Books), new Action<Book>(this.detach_Books));
+			this._Book1s = new EntitySet<Book1>(new Action<Book1>(this.attach_Book1s), new Action<Book1>(this.detach_Book1s));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(15) NOT NULL", CanBeNull=false)]
+		public string FirstName
+		{
+			get
+			{
+				return this._FirstName;
+			}
+			set
+			{
+				if ((this._FirstName != value))
+				{
+					this.OnFirstNameChanging(value);
+					this.SendPropertyChanging();
+					this._FirstName = value;
+					this.SendPropertyChanged("FirstName");
+					this.OnFirstNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="NVarChar(25) NOT NULL", CanBeNull=false)]
+		public string LastName
+		{
+			get
+			{
+				return this._LastName;
+			}
+			set
+			{
+				if ((this._LastName != value))
+				{
+					this.OnLastNameChanging(value);
+					this.SendPropertyChanging();
+					this._LastName = value;
+					this.SendPropertyChanged("LastName");
+					this.OnLastNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Author1_Book", Storage="_Books", ThisKey="Id", OtherKey="Id_Author")]
+		public EntitySet<Book> Books
+		{
+			get
+			{
+				return this._Books;
+			}
+			set
+			{
+				this._Books.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Author1_Book1", Storage="_Book1s", ThisKey="Id", OtherKey="Id_Author")]
+		public EntitySet<Book1> Book1s
+		{
+			get
+			{
+				return this._Book1s;
+			}
+			set
+			{
+				this._Book1s.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Books(Book entity)
+		{
+			this.SendPropertyChanging();
+			entity.Author1 = this;
+		}
+		
+		private void detach_Books(Book entity)
+		{
+			this.SendPropertyChanging();
+			entity.Author1 = null;
+		}
+		
+		private void attach_Book1s(Book1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Author1 = this;
+		}
+		
+		private void detach_Book1s(Book1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Author1 = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Books")]
+	public partial class Book1 : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Name;
+		
+		private int _Pages;
+		
+		private int _YearPress;
+		
+		private int _Id_Themes;
+		
+		private int _Id_Category;
+		
+		private int _Id_Author;
+		
+		private int _Id_Press;
+		
+		private string _Comment;
+		
+		private int _Quantity;
+		
+		private EntitySet<S_Card> _S_Cards;
+		
+		private EntitySet<T_Card> _T_Cards;
+		
+		private EntitySet<S_Card1> _S_Card1s;
+		
+		private EntitySet<T_Card1> _T_Card1s;
+		
+		private EntityRef<Author> _Author;
+		
+		private EntityRef<Author1> _Author1;
+		
+		private EntityRef<Category> _Category;
+		
+		private EntityRef<Press> _Press;
+		
+		private EntityRef<Theme> _Theme;
+		
+		private EntityRef<Category1> _Category1;
+		
+		private EntityRef<Press1> _Press1;
+		
+		private EntityRef<Theme1> _Theme1;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnPagesChanging(int value);
+    partial void OnPagesChanged();
+    partial void OnYearPressChanging(int value);
+    partial void OnYearPressChanged();
+    partial void OnId_ThemesChanging(int value);
+    partial void OnId_ThemesChanged();
+    partial void OnId_CategoryChanging(int value);
+    partial void OnId_CategoryChanged();
+    partial void OnId_AuthorChanging(int value);
+    partial void OnId_AuthorChanged();
+    partial void OnId_PressChanging(int value);
+    partial void OnId_PressChanged();
+    partial void OnCommentChanging(string value);
+    partial void OnCommentChanged();
+    partial void OnQuantityChanging(int value);
+    partial void OnQuantityChanged();
+    #endregion
+		
+		public Book1()
+		{
+			this._S_Cards = new EntitySet<S_Card>(new Action<S_Card>(this.attach_S_Cards), new Action<S_Card>(this.detach_S_Cards));
+			this._T_Cards = new EntitySet<T_Card>(new Action<T_Card>(this.attach_T_Cards), new Action<T_Card>(this.detach_T_Cards));
+			this._S_Card1s = new EntitySet<S_Card1>(new Action<S_Card1>(this.attach_S_Card1s), new Action<S_Card1>(this.detach_S_Card1s));
+			this._T_Card1s = new EntitySet<T_Card1>(new Action<T_Card1>(this.attach_T_Card1s), new Action<T_Card1>(this.detach_T_Card1s));
+			this._Author = default(EntityRef<Author>);
+			this._Author1 = default(EntityRef<Author1>);
+			this._Category = default(EntityRef<Category>);
+			this._Press = default(EntityRef<Press>);
+			this._Theme = default(EntityRef<Theme>);
+			this._Category1 = default(EntityRef<Category1>);
+			this._Press1 = default(EntityRef<Press1>);
+			this._Theme1 = default(EntityRef<Theme1>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Pages", DbType="Int NOT NULL")]
+		public int Pages
+		{
+			get
+			{
+				return this._Pages;
+			}
+			set
+			{
+				if ((this._Pages != value))
+				{
+					this.OnPagesChanging(value);
+					this.SendPropertyChanging();
+					this._Pages = value;
+					this.SendPropertyChanged("Pages");
+					this.OnPagesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_YearPress", DbType="Int NOT NULL")]
+		public int YearPress
+		{
+			get
+			{
+				return this._YearPress;
+			}
+			set
+			{
+				if ((this._YearPress != value))
+				{
+					this.OnYearPressChanging(value);
+					this.SendPropertyChanging();
+					this._YearPress = value;
+					this.SendPropertyChanged("YearPress");
+					this.OnYearPressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_Themes", DbType="Int NOT NULL")]
+		public int Id_Themes
+		{
+			get
+			{
+				return this._Id_Themes;
+			}
+			set
+			{
+				if ((this._Id_Themes != value))
+				{
+					if ((this._Theme.HasLoadedOrAssignedValue || this._Theme1.HasLoadedOrAssignedValue))
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnId_ThemesChanging(value);
+					this.SendPropertyChanging();
+					this._Id_Themes = value;
+					this.SendPropertyChanged("Id_Themes");
+					this.OnId_ThemesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_Category", DbType="Int NOT NULL")]
+		public int Id_Category
+		{
+			get
+			{
+				return this._Id_Category;
+			}
+			set
+			{
+				if ((this._Id_Category != value))
+				{
+					if ((this._Category.HasLoadedOrAssignedValue || this._Category1.HasLoadedOrAssignedValue))
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnId_CategoryChanging(value);
+					this.SendPropertyChanging();
+					this._Id_Category = value;
+					this.SendPropertyChanged("Id_Category");
+					this.OnId_CategoryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_Author", DbType="Int NOT NULL")]
+		public int Id_Author
+		{
+			get
+			{
+				return this._Id_Author;
+			}
+			set
+			{
+				if ((this._Id_Author != value))
+				{
+					if ((this._Author.HasLoadedOrAssignedValue || this._Author1.HasLoadedOrAssignedValue))
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnId_AuthorChanging(value);
+					this.SendPropertyChanging();
+					this._Id_Author = value;
+					this.SendPropertyChanged("Id_Author");
+					this.OnId_AuthorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_Press", DbType="Int NOT NULL")]
+		public int Id_Press
+		{
+			get
+			{
+				return this._Id_Press;
+			}
+			set
+			{
+				if ((this._Id_Press != value))
+				{
+					if ((this._Press.HasLoadedOrAssignedValue || this._Press1.HasLoadedOrAssignedValue))
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnId_PressChanging(value);
+					this.SendPropertyChanging();
+					this._Id_Press = value;
+					this.SendPropertyChanged("Id_Press");
+					this.OnId_PressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Comment", DbType="NVarChar(50)")]
+		public string Comment
+		{
+			get
+			{
+				return this._Comment;
+			}
+			set
+			{
+				if ((this._Comment != value))
+				{
+					this.OnCommentChanging(value);
+					this.SendPropertyChanging();
+					this._Comment = value;
+					this.SendPropertyChanged("Comment");
+					this.OnCommentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int NOT NULL")]
+		public int Quantity
+		{
+			get
+			{
+				return this._Quantity;
+			}
+			set
+			{
+				if ((this._Quantity != value))
+				{
+					this.OnQuantityChanging(value);
+					this.SendPropertyChanging();
+					this._Quantity = value;
+					this.SendPropertyChanged("Quantity");
+					this.OnQuantityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book1_S_Card", Storage="_S_Cards", ThisKey="Id", OtherKey="Id_Book")]
+		public EntitySet<S_Card> S_Cards
+		{
+			get
+			{
+				return this._S_Cards;
+			}
+			set
+			{
+				this._S_Cards.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book1_T_Card", Storage="_T_Cards", ThisKey="Id", OtherKey="Id_Book")]
+		public EntitySet<T_Card> T_Cards
+		{
+			get
+			{
+				return this._T_Cards;
+			}
+			set
+			{
+				this._T_Cards.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book1_S_Card1", Storage="_S_Card1s", ThisKey="Id", OtherKey="Id_Book")]
+		public EntitySet<S_Card1> S_Card1s
+		{
+			get
+			{
+				return this._S_Card1s;
+			}
+			set
+			{
+				this._S_Card1s.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book1_T_Card1", Storage="_T_Card1s", ThisKey="Id", OtherKey="Id_Book")]
+		public EntitySet<T_Card1> T_Card1s
+		{
+			get
+			{
+				return this._T_Card1s;
+			}
+			set
+			{
+				this._T_Card1s.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Author_Book1", Storage="_Author", ThisKey="Id_Author", OtherKey="Id", IsForeignKey=true)]
+		public Author Author
+		{
+			get
+			{
+				return this._Author.Entity;
+			}
+			set
+			{
+				Author previousValue = this._Author.Entity;
+				if (((previousValue != value) 
+							|| (this._Author.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Author.Entity = null;
+						previousValue.Book1s.Remove(this);
+					}
+					this._Author.Entity = value;
+					if ((value != null))
+					{
+						value.Book1s.Add(this);
+						this._Id_Author = value.Id;
+					}
+					else
+					{
+						this._Id_Author = default(int);
+					}
+					this.SendPropertyChanged("Author");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Author1_Book1", Storage="_Author1", ThisKey="Id_Author", OtherKey="Id", IsForeignKey=true)]
+		public Author1 Author1
+		{
+			get
+			{
+				return this._Author1.Entity;
+			}
+			set
+			{
+				Author1 previousValue = this._Author1.Entity;
+				if (((previousValue != value) 
+							|| (this._Author1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Author1.Entity = null;
+						previousValue.Book1s.Remove(this);
+					}
+					this._Author1.Entity = value;
+					if ((value != null))
+					{
+						value.Book1s.Add(this);
+						this._Id_Author = value.Id;
+					}
+					else
+					{
+						this._Id_Author = default(int);
+					}
+					this.SendPropertyChanged("Author1");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Category_Book1", Storage="_Category", ThisKey="Id_Category", OtherKey="Id", IsForeignKey=true)]
+		public Category Category
+		{
+			get
+			{
+				return this._Category.Entity;
+			}
+			set
+			{
+				Category previousValue = this._Category.Entity;
+				if (((previousValue != value) 
+							|| (this._Category.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Category.Entity = null;
+						previousValue.Book1s.Remove(this);
+					}
+					this._Category.Entity = value;
+					if ((value != null))
+					{
+						value.Book1s.Add(this);
+						this._Id_Category = value.Id;
+					}
+					else
+					{
+						this._Id_Category = default(int);
+					}
+					this.SendPropertyChanged("Category");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Press_Book1", Storage="_Press", ThisKey="Id_Press", OtherKey="Id", IsForeignKey=true)]
+		public Press Press
+		{
+			get
+			{
+				return this._Press.Entity;
+			}
+			set
+			{
+				Press previousValue = this._Press.Entity;
+				if (((previousValue != value) 
+							|| (this._Press.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Press.Entity = null;
+						previousValue.Book1s.Remove(this);
+					}
+					this._Press.Entity = value;
+					if ((value != null))
+					{
+						value.Book1s.Add(this);
+						this._Id_Press = value.Id;
+					}
+					else
+					{
+						this._Id_Press = default(int);
+					}
+					this.SendPropertyChanged("Press");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Theme_Book1", Storage="_Theme", ThisKey="Id_Themes", OtherKey="Id", IsForeignKey=true)]
+		public Theme Theme
+		{
+			get
+			{
+				return this._Theme.Entity;
+			}
+			set
+			{
+				Theme previousValue = this._Theme.Entity;
+				if (((previousValue != value) 
+							|| (this._Theme.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Theme.Entity = null;
+						previousValue.Book1s.Remove(this);
+					}
+					this._Theme.Entity = value;
+					if ((value != null))
+					{
+						value.Book1s.Add(this);
+						this._Id_Themes = value.Id;
+					}
+					else
+					{
+						this._Id_Themes = default(int);
+					}
+					this.SendPropertyChanged("Theme");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Category1_Book1", Storage="_Category1", ThisKey="Id_Category", OtherKey="Id", IsForeignKey=true)]
+		public Category1 Category1
+		{
+			get
+			{
+				return this._Category1.Entity;
+			}
+			set
+			{
+				Category1 previousValue = this._Category1.Entity;
+				if (((previousValue != value) 
+							|| (this._Category1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Category1.Entity = null;
+						previousValue.Book1s.Remove(this);
+					}
+					this._Category1.Entity = value;
+					if ((value != null))
+					{
+						value.Book1s.Add(this);
+						this._Id_Category = value.Id;
+					}
+					else
+					{
+						this._Id_Category = default(int);
+					}
+					this.SendPropertyChanged("Category1");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Press1_Book1", Storage="_Press1", ThisKey="Id_Press", OtherKey="Id", IsForeignKey=true)]
+		public Press1 Press1
+		{
+			get
+			{
+				return this._Press1.Entity;
+			}
+			set
+			{
+				Press1 previousValue = this._Press1.Entity;
+				if (((previousValue != value) 
+							|| (this._Press1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Press1.Entity = null;
+						previousValue.Book1s.Remove(this);
+					}
+					this._Press1.Entity = value;
+					if ((value != null))
+					{
+						value.Book1s.Add(this);
+						this._Id_Press = value.Id;
+					}
+					else
+					{
+						this._Id_Press = default(int);
+					}
+					this.SendPropertyChanged("Press1");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Theme1_Book1", Storage="_Theme1", ThisKey="Id_Themes", OtherKey="Id", IsForeignKey=true)]
+		public Theme1 Theme1
+		{
+			get
+			{
+				return this._Theme1.Entity;
+			}
+			set
+			{
+				Theme1 previousValue = this._Theme1.Entity;
+				if (((previousValue != value) 
+							|| (this._Theme1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Theme1.Entity = null;
+						previousValue.Book1s.Remove(this);
+					}
+					this._Theme1.Entity = value;
+					if ((value != null))
+					{
+						value.Book1s.Add(this);
+						this._Id_Themes = value.Id;
+					}
+					else
+					{
+						this._Id_Themes = default(int);
+					}
+					this.SendPropertyChanged("Theme1");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_S_Cards(S_Card entity)
+		{
+			this.SendPropertyChanging();
+			entity.Book1 = this;
+		}
+		
+		private void detach_S_Cards(S_Card entity)
+		{
+			this.SendPropertyChanging();
+			entity.Book1 = null;
+		}
+		
+		private void attach_T_Cards(T_Card entity)
+		{
+			this.SendPropertyChanging();
+			entity.Book1 = this;
+		}
+		
+		private void detach_T_Cards(T_Card entity)
+		{
+			this.SendPropertyChanging();
+			entity.Book1 = null;
+		}
+		
+		private void attach_S_Card1s(S_Card1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Book1 = this;
+		}
+		
+		private void detach_S_Card1s(S_Card1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Book1 = null;
+		}
+		
+		private void attach_T_Card1s(T_Card1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Book1 = this;
+		}
+		
+		private void detach_T_Card1s(T_Card1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Book1 = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Categories")]
+	public partial class Category1 : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Name;
+		
+		private EntitySet<Book> _Books;
+		
+		private EntitySet<Book1> _Book1s;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    #endregion
+		
+		public Category1()
+		{
+			this._Books = new EntitySet<Book>(new Action<Book>(this.attach_Books), new Action<Book>(this.detach_Books));
+			this._Book1s = new EntitySet<Book1>(new Action<Book1>(this.attach_Book1s), new Action<Book1>(this.detach_Book1s));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Category1_Book", Storage="_Books", ThisKey="Id", OtherKey="Id_Category")]
+		public EntitySet<Book> Books
+		{
+			get
+			{
+				return this._Books;
+			}
+			set
+			{
+				this._Books.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Category1_Book1", Storage="_Book1s", ThisKey="Id", OtherKey="Id_Category")]
+		public EntitySet<Book1> Book1s
+		{
+			get
+			{
+				return this._Book1s;
+			}
+			set
+			{
+				this._Book1s.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Books(Book entity)
+		{
+			this.SendPropertyChanging();
+			entity.Category1 = this;
+		}
+		
+		private void detach_Books(Book entity)
+		{
+			this.SendPropertyChanging();
+			entity.Category1 = null;
+		}
+		
+		private void attach_Book1s(Book1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Category1 = this;
+		}
+		
+		private void detach_Book1s(Book1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Category1 = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Departments")]
+	public partial class Department1 : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Name;
+		
+		private EntitySet<Teacher> _Teachers;
+		
+		private EntitySet<Teacher1> _Teacher1s;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    #endregion
+		
+		public Department1()
+		{
+			this._Teachers = new EntitySet<Teacher>(new Action<Teacher>(this.attach_Teachers), new Action<Teacher>(this.detach_Teachers));
+			this._Teacher1s = new EntitySet<Teacher1>(new Action<Teacher1>(this.attach_Teacher1s), new Action<Teacher1>(this.detach_Teacher1s));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(40) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Department1_Teacher", Storage="_Teachers", ThisKey="Id", OtherKey="Id_Dep")]
+		public EntitySet<Teacher> Teachers
+		{
+			get
+			{
+				return this._Teachers;
+			}
+			set
+			{
+				this._Teachers.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Department1_Teacher1", Storage="_Teacher1s", ThisKey="Id", OtherKey="Id_Dep")]
+		public EntitySet<Teacher1> Teacher1s
+		{
+			get
+			{
+				return this._Teacher1s;
+			}
+			set
+			{
+				this._Teacher1s.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Teachers(Teacher entity)
+		{
+			this.SendPropertyChanging();
+			entity.Department1 = this;
+		}
+		
+		private void detach_Teachers(Teacher entity)
+		{
+			this.SendPropertyChanging();
+			entity.Department1 = null;
+		}
+		
+		private void attach_Teacher1s(Teacher1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Department1 = this;
+		}
+		
+		private void detach_Teacher1s(Teacher1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Department1 = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Faculties")]
+	public partial class Faculty1 : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Name;
+		
+		private EntitySet<Group> _Groups;
+		
+		private EntitySet<Group1> _Group1s;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    #endregion
+		
+		public Faculty1()
+		{
+			this._Groups = new EntitySet<Group>(new Action<Group>(this.attach_Groups), new Action<Group>(this.detach_Groups));
+			this._Group1s = new EntitySet<Group1>(new Action<Group1>(this.attach_Group1s), new Action<Group1>(this.detach_Group1s));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Faculty1_Group", Storage="_Groups", ThisKey="Id", OtherKey="Id_Faculty")]
+		public EntitySet<Group> Groups
+		{
+			get
+			{
+				return this._Groups;
+			}
+			set
+			{
+				this._Groups.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Faculty1_Group1", Storage="_Group1s", ThisKey="Id", OtherKey="Id_Faculty")]
+		public EntitySet<Group1> Group1s
+		{
+			get
+			{
+				return this._Group1s;
+			}
+			set
+			{
+				this._Group1s.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Groups(Group entity)
+		{
+			this.SendPropertyChanging();
+			entity.Faculty1 = this;
+		}
+		
+		private void detach_Groups(Group entity)
+		{
+			this.SendPropertyChanging();
+			entity.Faculty1 = null;
+		}
+		
+		private void attach_Group1s(Group1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Faculty1 = this;
+		}
+		
+		private void detach_Group1s(Group1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Faculty1 = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Groups")]
+	public partial class Group1 : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Name;
+		
+		private int _Id_Faculty;
+		
+		private EntitySet<Student> _Students;
+		
+		private EntitySet<Student1> _Student1s;
+		
+		private EntityRef<Faculty> _Faculty;
+		
+		private EntityRef<Faculty1> _Faculty1;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnId_FacultyChanging(int value);
+    partial void OnId_FacultyChanged();
+    #endregion
+		
+		public Group1()
+		{
+			this._Students = new EntitySet<Student>(new Action<Student>(this.attach_Students), new Action<Student>(this.detach_Students));
+			this._Student1s = new EntitySet<Student1>(new Action<Student1>(this.attach_Student1s), new Action<Student1>(this.detach_Student1s));
+			this._Faculty = default(EntityRef<Faculty>);
+			this._Faculty1 = default(EntityRef<Faculty1>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(10) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_Faculty", DbType="Int NOT NULL")]
+		public int Id_Faculty
+		{
+			get
+			{
+				return this._Id_Faculty;
+			}
+			set
+			{
+				if ((this._Id_Faculty != value))
+				{
+					if ((this._Faculty.HasLoadedOrAssignedValue || this._Faculty1.HasLoadedOrAssignedValue))
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnId_FacultyChanging(value);
+					this.SendPropertyChanging();
+					this._Id_Faculty = value;
+					this.SendPropertyChanged("Id_Faculty");
+					this.OnId_FacultyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Group1_Student", Storage="_Students", ThisKey="Id", OtherKey="Id_Group")]
+		public EntitySet<Student> Students
+		{
+			get
+			{
+				return this._Students;
+			}
+			set
+			{
+				this._Students.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Group1_Student1", Storage="_Student1s", ThisKey="Id", OtherKey="Id_Group")]
+		public EntitySet<Student1> Student1s
+		{
+			get
+			{
+				return this._Student1s;
+			}
+			set
+			{
+				this._Student1s.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Faculty_Group1", Storage="_Faculty", ThisKey="Id_Faculty", OtherKey="Id", IsForeignKey=true)]
+		public Faculty Faculty
+		{
+			get
+			{
+				return this._Faculty.Entity;
+			}
+			set
+			{
+				Faculty previousValue = this._Faculty.Entity;
+				if (((previousValue != value) 
+							|| (this._Faculty.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Faculty.Entity = null;
+						previousValue.Group1s.Remove(this);
+					}
+					this._Faculty.Entity = value;
+					if ((value != null))
+					{
+						value.Group1s.Add(this);
+						this._Id_Faculty = value.Id;
+					}
+					else
+					{
+						this._Id_Faculty = default(int);
+					}
+					this.SendPropertyChanged("Faculty");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Faculty1_Group1", Storage="_Faculty1", ThisKey="Id_Faculty", OtherKey="Id", IsForeignKey=true)]
+		public Faculty1 Faculty1
+		{
+			get
+			{
+				return this._Faculty1.Entity;
+			}
+			set
+			{
+				Faculty1 previousValue = this._Faculty1.Entity;
+				if (((previousValue != value) 
+							|| (this._Faculty1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Faculty1.Entity = null;
+						previousValue.Group1s.Remove(this);
+					}
+					this._Faculty1.Entity = value;
+					if ((value != null))
+					{
+						value.Group1s.Add(this);
+						this._Id_Faculty = value.Id;
+					}
+					else
+					{
+						this._Id_Faculty = default(int);
+					}
+					this.SendPropertyChanged("Faculty1");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Students(Student entity)
+		{
+			this.SendPropertyChanging();
+			entity.Group1 = this;
+		}
+		
+		private void detach_Students(Student entity)
+		{
+			this.SendPropertyChanging();
+			entity.Group1 = null;
+		}
+		
+		private void attach_Student1s(Student1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Group1 = this;
+		}
+		
+		private void detach_Student1s(Student1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Group1 = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Libs")]
+	public partial class Lib1 : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _FirstName;
+		
+		private string _LastName;
+		
+		private EntitySet<S_Card> _S_Cards;
+		
+		private EntitySet<T_Card> _T_Cards;
+		
+		private EntitySet<S_Card1> _S_Card1s;
+		
+		private EntitySet<T_Card1> _T_Card1s;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnFirstNameChanging(string value);
+    partial void OnFirstNameChanged();
+    partial void OnLastNameChanging(string value);
+    partial void OnLastNameChanged();
+    #endregion
+		
+		public Lib1()
+		{
+			this._S_Cards = new EntitySet<S_Card>(new Action<S_Card>(this.attach_S_Cards), new Action<S_Card>(this.detach_S_Cards));
+			this._T_Cards = new EntitySet<T_Card>(new Action<T_Card>(this.attach_T_Cards), new Action<T_Card>(this.detach_T_Cards));
+			this._S_Card1s = new EntitySet<S_Card1>(new Action<S_Card1>(this.attach_S_Card1s), new Action<S_Card1>(this.detach_S_Card1s));
+			this._T_Card1s = new EntitySet<T_Card1>(new Action<T_Card1>(this.attach_T_Card1s), new Action<T_Card1>(this.detach_T_Card1s));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(15) NOT NULL", CanBeNull=false)]
+		public string FirstName
+		{
+			get
+			{
+				return this._FirstName;
+			}
+			set
+			{
+				if ((this._FirstName != value))
+				{
+					this.OnFirstNameChanging(value);
+					this.SendPropertyChanging();
+					this._FirstName = value;
+					this.SendPropertyChanged("FirstName");
+					this.OnFirstNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="NVarChar(25) NOT NULL", CanBeNull=false)]
+		public string LastName
+		{
+			get
+			{
+				return this._LastName;
+			}
+			set
+			{
+				if ((this._LastName != value))
+				{
+					this.OnLastNameChanging(value);
+					this.SendPropertyChanging();
+					this._LastName = value;
+					this.SendPropertyChanged("LastName");
+					this.OnLastNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lib1_S_Card", Storage="_S_Cards", ThisKey="Id", OtherKey="Id_Lib")]
+		public EntitySet<S_Card> S_Cards
+		{
+			get
+			{
+				return this._S_Cards;
+			}
+			set
+			{
+				this._S_Cards.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lib1_T_Card", Storage="_T_Cards", ThisKey="Id", OtherKey="Id_Lib")]
+		public EntitySet<T_Card> T_Cards
+		{
+			get
+			{
+				return this._T_Cards;
+			}
+			set
+			{
+				this._T_Cards.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lib1_S_Card1", Storage="_S_Card1s", ThisKey="Id", OtherKey="Id_Lib")]
+		public EntitySet<S_Card1> S_Card1s
+		{
+			get
+			{
+				return this._S_Card1s;
+			}
+			set
+			{
+				this._S_Card1s.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lib1_T_Card1", Storage="_T_Card1s", ThisKey="Id", OtherKey="Id_Lib")]
+		public EntitySet<T_Card1> T_Card1s
+		{
+			get
+			{
+				return this._T_Card1s;
+			}
+			set
+			{
+				this._T_Card1s.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_S_Cards(S_Card entity)
+		{
+			this.SendPropertyChanging();
+			entity.Lib1 = this;
+		}
+		
+		private void detach_S_Cards(S_Card entity)
+		{
+			this.SendPropertyChanging();
+			entity.Lib1 = null;
+		}
+		
+		private void attach_T_Cards(T_Card entity)
+		{
+			this.SendPropertyChanging();
+			entity.Lib1 = this;
+		}
+		
+		private void detach_T_Cards(T_Card entity)
+		{
+			this.SendPropertyChanging();
+			entity.Lib1 = null;
+		}
+		
+		private void attach_S_Card1s(S_Card1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Lib1 = this;
+		}
+		
+		private void detach_S_Card1s(S_Card1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Lib1 = null;
+		}
+		
+		private void attach_T_Card1s(T_Card1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Lib1 = this;
+		}
+		
+		private void detach_T_Card1s(T_Card1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Lib1 = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Press")]
+	public partial class Press1 : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Name;
+		
+		private EntitySet<Book> _Books;
+		
+		private EntitySet<Book1> _Book1s;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    #endregion
+		
+		public Press1()
+		{
+			this._Books = new EntitySet<Book>(new Action<Book>(this.attach_Books), new Action<Book>(this.detach_Books));
+			this._Book1s = new EntitySet<Book1>(new Action<Book1>(this.attach_Book1s), new Action<Book1>(this.detach_Book1s));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Press1_Book", Storage="_Books", ThisKey="Id", OtherKey="Id_Press")]
+		public EntitySet<Book> Books
+		{
+			get
+			{
+				return this._Books;
+			}
+			set
+			{
+				this._Books.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Press1_Book1", Storage="_Book1s", ThisKey="Id", OtherKey="Id_Press")]
+		public EntitySet<Book1> Book1s
+		{
+			get
+			{
+				return this._Book1s;
+			}
+			set
+			{
+				this._Book1s.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Books(Book entity)
+		{
+			this.SendPropertyChanging();
+			entity.Press1 = this;
+		}
+		
+		private void detach_Books(Book entity)
+		{
+			this.SendPropertyChanging();
+			entity.Press1 = null;
+		}
+		
+		private void attach_Book1s(Book1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Press1 = this;
+		}
+		
+		private void detach_Book1s(Book1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Press1 = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.S_Cards")]
+	public partial class S_Card1 : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private int _Id_Student;
+		
+		private int _Id_Book;
+		
+		private System.DateTime _DateOut;
+		
+		private System.Nullable<System.DateTime> _DateIn;
+		
+		private int _Id_Lib;
+		
+		private EntityRef<Book> _Book;
+		
+		private EntityRef<Book1> _Book1;
+		
+		private EntityRef<Lib> _Lib;
+		
+		private EntityRef<Lib1> _Lib1;
+		
+		private EntityRef<Student> _Student;
+		
+		private EntityRef<Student1> _Student1;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnId_StudentChanging(int value);
+    partial void OnId_StudentChanged();
+    partial void OnId_BookChanging(int value);
+    partial void OnId_BookChanged();
+    partial void OnDateOutChanging(System.DateTime value);
+    partial void OnDateOutChanged();
+    partial void OnDateInChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateInChanged();
+    partial void OnId_LibChanging(int value);
+    partial void OnId_LibChanged();
+    #endregion
+		
+		public S_Card1()
+		{
+			this._Book = default(EntityRef<Book>);
+			this._Book1 = default(EntityRef<Book1>);
+			this._Lib = default(EntityRef<Lib>);
+			this._Lib1 = default(EntityRef<Lib1>);
+			this._Student = default(EntityRef<Student>);
+			this._Student1 = default(EntityRef<Student1>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_Student", DbType="Int NOT NULL")]
+		public int Id_Student
+		{
+			get
+			{
+				return this._Id_Student;
+			}
+			set
+			{
+				if ((this._Id_Student != value))
+				{
+					if ((this._Student.HasLoadedOrAssignedValue || this._Student1.HasLoadedOrAssignedValue))
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnId_StudentChanging(value);
+					this.SendPropertyChanging();
+					this._Id_Student = value;
+					this.SendPropertyChanged("Id_Student");
+					this.OnId_StudentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_Book", DbType="Int NOT NULL")]
+		public int Id_Book
+		{
+			get
+			{
+				return this._Id_Book;
+			}
+			set
+			{
+				if ((this._Id_Book != value))
+				{
+					if ((this._Book.HasLoadedOrAssignedValue || this._Book1.HasLoadedOrAssignedValue))
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnId_BookChanging(value);
+					this.SendPropertyChanging();
+					this._Id_Book = value;
+					this.SendPropertyChanged("Id_Book");
+					this.OnId_BookChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateOut", DbType="DateTime NOT NULL")]
+		public System.DateTime DateOut
+		{
+			get
+			{
+				return this._DateOut;
+			}
+			set
+			{
+				if ((this._DateOut != value))
+				{
+					this.OnDateOutChanging(value);
+					this.SendPropertyChanging();
+					this._DateOut = value;
+					this.SendPropertyChanged("DateOut");
+					this.OnDateOutChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateIn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateIn
+		{
+			get
+			{
+				return this._DateIn;
+			}
+			set
+			{
+				if ((this._DateIn != value))
+				{
+					this.OnDateInChanging(value);
+					this.SendPropertyChanging();
+					this._DateIn = value;
+					this.SendPropertyChanged("DateIn");
+					this.OnDateInChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_Lib", DbType="Int NOT NULL")]
+		public int Id_Lib
+		{
+			get
+			{
+				return this._Id_Lib;
+			}
+			set
+			{
+				if ((this._Id_Lib != value))
+				{
+					if ((this._Lib.HasLoadedOrAssignedValue || this._Lib1.HasLoadedOrAssignedValue))
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnId_LibChanging(value);
+					this.SendPropertyChanging();
+					this._Id_Lib = value;
+					this.SendPropertyChanged("Id_Lib");
+					this.OnId_LibChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book_S_Card1", Storage="_Book", ThisKey="Id_Book", OtherKey="Id", IsForeignKey=true)]
+		public Book Book
+		{
+			get
+			{
+				return this._Book.Entity;
+			}
+			set
+			{
+				Book previousValue = this._Book.Entity;
+				if (((previousValue != value) 
+							|| (this._Book.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Book.Entity = null;
+						previousValue.S_Card1s.Remove(this);
+					}
+					this._Book.Entity = value;
+					if ((value != null))
+					{
+						value.S_Card1s.Add(this);
+						this._Id_Book = value.Id;
+					}
+					else
+					{
+						this._Id_Book = default(int);
+					}
+					this.SendPropertyChanged("Book");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book1_S_Card1", Storage="_Book1", ThisKey="Id_Book", OtherKey="Id", IsForeignKey=true)]
+		public Book1 Book1
+		{
+			get
+			{
+				return this._Book1.Entity;
+			}
+			set
+			{
+				Book1 previousValue = this._Book1.Entity;
+				if (((previousValue != value) 
+							|| (this._Book1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Book1.Entity = null;
+						previousValue.S_Card1s.Remove(this);
+					}
+					this._Book1.Entity = value;
+					if ((value != null))
+					{
+						value.S_Card1s.Add(this);
+						this._Id_Book = value.Id;
+					}
+					else
+					{
+						this._Id_Book = default(int);
+					}
+					this.SendPropertyChanged("Book1");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lib_S_Card1", Storage="_Lib", ThisKey="Id_Lib", OtherKey="Id", IsForeignKey=true)]
+		public Lib Lib
+		{
+			get
+			{
+				return this._Lib.Entity;
+			}
+			set
+			{
+				Lib previousValue = this._Lib.Entity;
+				if (((previousValue != value) 
+							|| (this._Lib.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Lib.Entity = null;
+						previousValue.S_Card1s.Remove(this);
+					}
+					this._Lib.Entity = value;
+					if ((value != null))
+					{
+						value.S_Card1s.Add(this);
+						this._Id_Lib = value.Id;
+					}
+					else
+					{
+						this._Id_Lib = default(int);
+					}
+					this.SendPropertyChanged("Lib");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lib1_S_Card1", Storage="_Lib1", ThisKey="Id_Lib", OtherKey="Id", IsForeignKey=true)]
+		public Lib1 Lib1
+		{
+			get
+			{
+				return this._Lib1.Entity;
+			}
+			set
+			{
+				Lib1 previousValue = this._Lib1.Entity;
+				if (((previousValue != value) 
+							|| (this._Lib1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Lib1.Entity = null;
+						previousValue.S_Card1s.Remove(this);
+					}
+					this._Lib1.Entity = value;
+					if ((value != null))
+					{
+						value.S_Card1s.Add(this);
+						this._Id_Lib = value.Id;
+					}
+					else
+					{
+						this._Id_Lib = default(int);
+					}
+					this.SendPropertyChanged("Lib1");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Student_S_Card1", Storage="_Student", ThisKey="Id_Student", OtherKey="Id", IsForeignKey=true)]
+		public Student Student
+		{
+			get
+			{
+				return this._Student.Entity;
+			}
+			set
+			{
+				Student previousValue = this._Student.Entity;
+				if (((previousValue != value) 
+							|| (this._Student.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Student.Entity = null;
+						previousValue.S_Card1s.Remove(this);
+					}
+					this._Student.Entity = value;
+					if ((value != null))
+					{
+						value.S_Card1s.Add(this);
+						this._Id_Student = value.Id;
+					}
+					else
+					{
+						this._Id_Student = default(int);
+					}
+					this.SendPropertyChanged("Student");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Student1_S_Card1", Storage="_Student1", ThisKey="Id_Student", OtherKey="Id", IsForeignKey=true)]
+		public Student1 Student1
+		{
+			get
+			{
+				return this._Student1.Entity;
+			}
+			set
+			{
+				Student1 previousValue = this._Student1.Entity;
+				if (((previousValue != value) 
+							|| (this._Student1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Student1.Entity = null;
+						previousValue.S_Card1s.Remove(this);
+					}
+					this._Student1.Entity = value;
+					if ((value != null))
+					{
+						value.S_Card1s.Add(this);
+						this._Id_Student = value.Id;
+					}
+					else
+					{
+						this._Id_Student = default(int);
+					}
+					this.SendPropertyChanged("Student1");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Students")]
+	public partial class Student1 : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _FirstName;
+		
+		private string _LastName;
+		
+		private int _Id_Group;
+		
+		private int _Term;
+		
+		private EntitySet<S_Card> _S_Cards;
+		
+		private EntitySet<S_Card1> _S_Card1s;
+		
+		private EntityRef<Group> _Group;
+		
+		private EntityRef<Group1> _Group1;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnFirstNameChanging(string value);
+    partial void OnFirstNameChanged();
+    partial void OnLastNameChanging(string value);
+    partial void OnLastNameChanged();
+    partial void OnId_GroupChanging(int value);
+    partial void OnId_GroupChanged();
+    partial void OnTermChanging(int value);
+    partial void OnTermChanged();
+    #endregion
+		
+		public Student1()
+		{
+			this._S_Cards = new EntitySet<S_Card>(new Action<S_Card>(this.attach_S_Cards), new Action<S_Card>(this.detach_S_Cards));
+			this._S_Card1s = new EntitySet<S_Card1>(new Action<S_Card1>(this.attach_S_Card1s), new Action<S_Card1>(this.detach_S_Card1s));
+			this._Group = default(EntityRef<Group>);
+			this._Group1 = default(EntityRef<Group1>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(15) NOT NULL", CanBeNull=false)]
+		public string FirstName
+		{
+			get
+			{
+				return this._FirstName;
+			}
+			set
+			{
+				if ((this._FirstName != value))
+				{
+					this.OnFirstNameChanging(value);
+					this.SendPropertyChanging();
+					this._FirstName = value;
+					this.SendPropertyChanged("FirstName");
+					this.OnFirstNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="NVarChar(25) NOT NULL", CanBeNull=false)]
+		public string LastName
+		{
+			get
+			{
+				return this._LastName;
+			}
+			set
+			{
+				if ((this._LastName != value))
+				{
+					this.OnLastNameChanging(value);
+					this.SendPropertyChanging();
+					this._LastName = value;
+					this.SendPropertyChanged("LastName");
+					this.OnLastNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_Group", DbType="Int NOT NULL")]
+		public int Id_Group
+		{
+			get
+			{
+				return this._Id_Group;
+			}
+			set
+			{
+				if ((this._Id_Group != value))
+				{
+					if ((this._Group.HasLoadedOrAssignedValue || this._Group1.HasLoadedOrAssignedValue))
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnId_GroupChanging(value);
+					this.SendPropertyChanging();
+					this._Id_Group = value;
+					this.SendPropertyChanged("Id_Group");
+					this.OnId_GroupChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Term", DbType="Int NOT NULL")]
+		public int Term
+		{
+			get
+			{
+				return this._Term;
+			}
+			set
+			{
+				if ((this._Term != value))
+				{
+					this.OnTermChanging(value);
+					this.SendPropertyChanging();
+					this._Term = value;
+					this.SendPropertyChanged("Term");
+					this.OnTermChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Student1_S_Card", Storage="_S_Cards", ThisKey="Id", OtherKey="Id_Student")]
+		public EntitySet<S_Card> S_Cards
+		{
+			get
+			{
+				return this._S_Cards;
+			}
+			set
+			{
+				this._S_Cards.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Student1_S_Card1", Storage="_S_Card1s", ThisKey="Id", OtherKey="Id_Student")]
+		public EntitySet<S_Card1> S_Card1s
+		{
+			get
+			{
+				return this._S_Card1s;
+			}
+			set
+			{
+				this._S_Card1s.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Group_Student1", Storage="_Group", ThisKey="Id_Group", OtherKey="Id", IsForeignKey=true)]
+		public Group Group
+		{
+			get
+			{
+				return this._Group.Entity;
+			}
+			set
+			{
+				Group previousValue = this._Group.Entity;
+				if (((previousValue != value) 
+							|| (this._Group.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Group.Entity = null;
+						previousValue.Student1s.Remove(this);
+					}
+					this._Group.Entity = value;
+					if ((value != null))
+					{
+						value.Student1s.Add(this);
+						this._Id_Group = value.Id;
+					}
+					else
+					{
+						this._Id_Group = default(int);
+					}
+					this.SendPropertyChanged("Group");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Group1_Student1", Storage="_Group1", ThisKey="Id_Group", OtherKey="Id", IsForeignKey=true)]
+		public Group1 Group1
+		{
+			get
+			{
+				return this._Group1.Entity;
+			}
+			set
+			{
+				Group1 previousValue = this._Group1.Entity;
+				if (((previousValue != value) 
+							|| (this._Group1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Group1.Entity = null;
+						previousValue.Student1s.Remove(this);
+					}
+					this._Group1.Entity = value;
+					if ((value != null))
+					{
+						value.Student1s.Add(this);
+						this._Id_Group = value.Id;
+					}
+					else
+					{
+						this._Id_Group = default(int);
+					}
+					this.SendPropertyChanged("Group1");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_S_Cards(S_Card entity)
+		{
+			this.SendPropertyChanging();
+			entity.Student1 = this;
+		}
+		
+		private void detach_S_Cards(S_Card entity)
+		{
+			this.SendPropertyChanging();
+			entity.Student1 = null;
+		}
+		
+		private void attach_S_Card1s(S_Card1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Student1 = this;
+		}
+		
+		private void detach_S_Card1s(S_Card1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Student1 = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.T_Cards")]
+	public partial class T_Card1 : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private int _Id_Teacher;
+		
+		private int _Id_Book;
+		
+		private System.DateTime _DateOut;
+		
+		private System.Nullable<System.DateTime> _DateIn;
+		
+		private int _Id_Lib;
+		
+		private EntityRef<Book> _Book;
+		
+		private EntityRef<Book1> _Book1;
+		
+		private EntityRef<Lib> _Lib;
+		
+		private EntityRef<Lib1> _Lib1;
+		
+		private EntityRef<Teacher> _Teacher;
+		
+		private EntityRef<Teacher1> _Teacher1;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnId_TeacherChanging(int value);
+    partial void OnId_TeacherChanged();
+    partial void OnId_BookChanging(int value);
+    partial void OnId_BookChanged();
+    partial void OnDateOutChanging(System.DateTime value);
+    partial void OnDateOutChanged();
+    partial void OnDateInChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateInChanged();
+    partial void OnId_LibChanging(int value);
+    partial void OnId_LibChanged();
+    #endregion
+		
+		public T_Card1()
+		{
+			this._Book = default(EntityRef<Book>);
+			this._Book1 = default(EntityRef<Book1>);
+			this._Lib = default(EntityRef<Lib>);
+			this._Lib1 = default(EntityRef<Lib1>);
+			this._Teacher = default(EntityRef<Teacher>);
+			this._Teacher1 = default(EntityRef<Teacher1>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_Teacher", DbType="Int NOT NULL")]
+		public int Id_Teacher
+		{
+			get
+			{
+				return this._Id_Teacher;
+			}
+			set
+			{
+				if ((this._Id_Teacher != value))
+				{
+					if ((this._Teacher.HasLoadedOrAssignedValue || this._Teacher1.HasLoadedOrAssignedValue))
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnId_TeacherChanging(value);
+					this.SendPropertyChanging();
+					this._Id_Teacher = value;
+					this.SendPropertyChanged("Id_Teacher");
+					this.OnId_TeacherChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_Book", DbType="Int NOT NULL")]
+		public int Id_Book
+		{
+			get
+			{
+				return this._Id_Book;
+			}
+			set
+			{
+				if ((this._Id_Book != value))
+				{
+					if ((this._Book.HasLoadedOrAssignedValue || this._Book1.HasLoadedOrAssignedValue))
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnId_BookChanging(value);
+					this.SendPropertyChanging();
+					this._Id_Book = value;
+					this.SendPropertyChanged("Id_Book");
+					this.OnId_BookChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateOut", DbType="DateTime NOT NULL")]
+		public System.DateTime DateOut
+		{
+			get
+			{
+				return this._DateOut;
+			}
+			set
+			{
+				if ((this._DateOut != value))
+				{
+					this.OnDateOutChanging(value);
+					this.SendPropertyChanging();
+					this._DateOut = value;
+					this.SendPropertyChanged("DateOut");
+					this.OnDateOutChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateIn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateIn
+		{
+			get
+			{
+				return this._DateIn;
+			}
+			set
+			{
+				if ((this._DateIn != value))
+				{
+					this.OnDateInChanging(value);
+					this.SendPropertyChanging();
+					this._DateIn = value;
+					this.SendPropertyChanged("DateIn");
+					this.OnDateInChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_Lib", DbType="Int NOT NULL")]
+		public int Id_Lib
+		{
+			get
+			{
+				return this._Id_Lib;
+			}
+			set
+			{
+				if ((this._Id_Lib != value))
+				{
+					if ((this._Lib.HasLoadedOrAssignedValue || this._Lib1.HasLoadedOrAssignedValue))
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnId_LibChanging(value);
+					this.SendPropertyChanging();
+					this._Id_Lib = value;
+					this.SendPropertyChanged("Id_Lib");
+					this.OnId_LibChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book_T_Card1", Storage="_Book", ThisKey="Id_Book", OtherKey="Id", IsForeignKey=true)]
+		public Book Book
+		{
+			get
+			{
+				return this._Book.Entity;
+			}
+			set
+			{
+				Book previousValue = this._Book.Entity;
+				if (((previousValue != value) 
+							|| (this._Book.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Book.Entity = null;
+						previousValue.T_Card1s.Remove(this);
+					}
+					this._Book.Entity = value;
+					if ((value != null))
+					{
+						value.T_Card1s.Add(this);
+						this._Id_Book = value.Id;
+					}
+					else
+					{
+						this._Id_Book = default(int);
+					}
+					this.SendPropertyChanged("Book");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Book1_T_Card1", Storage="_Book1", ThisKey="Id_Book", OtherKey="Id", IsForeignKey=true)]
+		public Book1 Book1
+		{
+			get
+			{
+				return this._Book1.Entity;
+			}
+			set
+			{
+				Book1 previousValue = this._Book1.Entity;
+				if (((previousValue != value) 
+							|| (this._Book1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Book1.Entity = null;
+						previousValue.T_Card1s.Remove(this);
+					}
+					this._Book1.Entity = value;
+					if ((value != null))
+					{
+						value.T_Card1s.Add(this);
+						this._Id_Book = value.Id;
+					}
+					else
+					{
+						this._Id_Book = default(int);
+					}
+					this.SendPropertyChanged("Book1");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lib_T_Card1", Storage="_Lib", ThisKey="Id_Lib", OtherKey="Id", IsForeignKey=true)]
+		public Lib Lib
+		{
+			get
+			{
+				return this._Lib.Entity;
+			}
+			set
+			{
+				Lib previousValue = this._Lib.Entity;
+				if (((previousValue != value) 
+							|| (this._Lib.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Lib.Entity = null;
+						previousValue.T_Card1s.Remove(this);
+					}
+					this._Lib.Entity = value;
+					if ((value != null))
+					{
+						value.T_Card1s.Add(this);
+						this._Id_Lib = value.Id;
+					}
+					else
+					{
+						this._Id_Lib = default(int);
+					}
+					this.SendPropertyChanged("Lib");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lib1_T_Card1", Storage="_Lib1", ThisKey="Id_Lib", OtherKey="Id", IsForeignKey=true)]
+		public Lib1 Lib1
+		{
+			get
+			{
+				return this._Lib1.Entity;
+			}
+			set
+			{
+				Lib1 previousValue = this._Lib1.Entity;
+				if (((previousValue != value) 
+							|| (this._Lib1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Lib1.Entity = null;
+						previousValue.T_Card1s.Remove(this);
+					}
+					this._Lib1.Entity = value;
+					if ((value != null))
+					{
+						value.T_Card1s.Add(this);
+						this._Id_Lib = value.Id;
+					}
+					else
+					{
+						this._Id_Lib = default(int);
+					}
+					this.SendPropertyChanged("Lib1");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Teacher_T_Card1", Storage="_Teacher", ThisKey="Id_Teacher", OtherKey="Id", IsForeignKey=true)]
+		public Teacher Teacher
+		{
+			get
+			{
+				return this._Teacher.Entity;
+			}
+			set
+			{
+				Teacher previousValue = this._Teacher.Entity;
+				if (((previousValue != value) 
+							|| (this._Teacher.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Teacher.Entity = null;
+						previousValue.T_Card1s.Remove(this);
+					}
+					this._Teacher.Entity = value;
+					if ((value != null))
+					{
+						value.T_Card1s.Add(this);
+						this._Id_Teacher = value.Id;
+					}
+					else
+					{
+						this._Id_Teacher = default(int);
+					}
+					this.SendPropertyChanged("Teacher");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Teacher1_T_Card1", Storage="_Teacher1", ThisKey="Id_Teacher", OtherKey="Id", IsForeignKey=true)]
+		public Teacher1 Teacher1
+		{
+			get
+			{
+				return this._Teacher1.Entity;
+			}
+			set
+			{
+				Teacher1 previousValue = this._Teacher1.Entity;
+				if (((previousValue != value) 
+							|| (this._Teacher1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Teacher1.Entity = null;
+						previousValue.T_Card1s.Remove(this);
+					}
+					this._Teacher1.Entity = value;
+					if ((value != null))
+					{
+						value.T_Card1s.Add(this);
+						this._Id_Teacher = value.Id;
+					}
+					else
+					{
+						this._Id_Teacher = default(int);
+					}
+					this.SendPropertyChanged("Teacher1");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Teachers")]
+	public partial class Teacher1 : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _FirstName;
+		
+		private string _LastName;
+		
+		private int _Id_Dep;
+		
+		private EntitySet<T_Card> _T_Cards;
+		
+		private EntitySet<T_Card1> _T_Card1s;
+		
+		private EntityRef<Department> _Department;
+		
+		private EntityRef<Department1> _Department1;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnFirstNameChanging(string value);
+    partial void OnFirstNameChanged();
+    partial void OnLastNameChanging(string value);
+    partial void OnLastNameChanged();
+    partial void OnId_DepChanging(int value);
+    partial void OnId_DepChanged();
+    #endregion
+		
+		public Teacher1()
+		{
+			this._T_Cards = new EntitySet<T_Card>(new Action<T_Card>(this.attach_T_Cards), new Action<T_Card>(this.detach_T_Cards));
+			this._T_Card1s = new EntitySet<T_Card1>(new Action<T_Card1>(this.attach_T_Card1s), new Action<T_Card1>(this.detach_T_Card1s));
+			this._Department = default(EntityRef<Department>);
+			this._Department1 = default(EntityRef<Department1>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(15) NOT NULL", CanBeNull=false)]
+		public string FirstName
+		{
+			get
+			{
+				return this._FirstName;
+			}
+			set
+			{
+				if ((this._FirstName != value))
+				{
+					this.OnFirstNameChanging(value);
+					this.SendPropertyChanging();
+					this._FirstName = value;
+					this.SendPropertyChanged("FirstName");
+					this.OnFirstNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="NVarChar(25) NOT NULL", CanBeNull=false)]
+		public string LastName
+		{
+			get
+			{
+				return this._LastName;
+			}
+			set
+			{
+				if ((this._LastName != value))
+				{
+					this.OnLastNameChanging(value);
+					this.SendPropertyChanging();
+					this._LastName = value;
+					this.SendPropertyChanged("LastName");
+					this.OnLastNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_Dep", DbType="Int NOT NULL")]
+		public int Id_Dep
+		{
+			get
+			{
+				return this._Id_Dep;
+			}
+			set
+			{
+				if ((this._Id_Dep != value))
+				{
+					if ((this._Department.HasLoadedOrAssignedValue || this._Department1.HasLoadedOrAssignedValue))
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnId_DepChanging(value);
+					this.SendPropertyChanging();
+					this._Id_Dep = value;
+					this.SendPropertyChanged("Id_Dep");
+					this.OnId_DepChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Teacher1_T_Card", Storage="_T_Cards", ThisKey="Id", OtherKey="Id_Teacher")]
+		public EntitySet<T_Card> T_Cards
+		{
+			get
+			{
+				return this._T_Cards;
+			}
+			set
+			{
+				this._T_Cards.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Teacher1_T_Card1", Storage="_T_Card1s", ThisKey="Id", OtherKey="Id_Teacher")]
+		public EntitySet<T_Card1> T_Card1s
+		{
+			get
+			{
+				return this._T_Card1s;
+			}
+			set
+			{
+				this._T_Card1s.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Department_Teacher1", Storage="_Department", ThisKey="Id_Dep", OtherKey="Id", IsForeignKey=true)]
+		public Department Department
+		{
+			get
+			{
+				return this._Department.Entity;
+			}
+			set
+			{
+				Department previousValue = this._Department.Entity;
+				if (((previousValue != value) 
+							|| (this._Department.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Department.Entity = null;
+						previousValue.Teacher1s.Remove(this);
+					}
+					this._Department.Entity = value;
+					if ((value != null))
+					{
+						value.Teacher1s.Add(this);
+						this._Id_Dep = value.Id;
+					}
+					else
+					{
+						this._Id_Dep = default(int);
+					}
+					this.SendPropertyChanged("Department");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Department1_Teacher1", Storage="_Department1", ThisKey="Id_Dep", OtherKey="Id", IsForeignKey=true)]
+		public Department1 Department1
+		{
+			get
+			{
+				return this._Department1.Entity;
+			}
+			set
+			{
+				Department1 previousValue = this._Department1.Entity;
+				if (((previousValue != value) 
+							|| (this._Department1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Department1.Entity = null;
+						previousValue.Teacher1s.Remove(this);
+					}
+					this._Department1.Entity = value;
+					if ((value != null))
+					{
+						value.Teacher1s.Add(this);
+						this._Id_Dep = value.Id;
+					}
+					else
+					{
+						this._Id_Dep = default(int);
+					}
+					this.SendPropertyChanged("Department1");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_T_Cards(T_Card entity)
+		{
+			this.SendPropertyChanging();
+			entity.Teacher1 = this;
+		}
+		
+		private void detach_T_Cards(T_Card entity)
+		{
+			this.SendPropertyChanging();
+			entity.Teacher1 = null;
+		}
+		
+		private void attach_T_Card1s(T_Card1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Teacher1 = this;
+		}
+		
+		private void detach_T_Card1s(T_Card1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Teacher1 = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Themes")]
+	public partial class Theme1 : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Name;
+		
+		private EntitySet<Book> _Books;
+		
+		private EntitySet<Book1> _Book1s;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    #endregion
+		
+		public Theme1()
+		{
+			this._Books = new EntitySet<Book>(new Action<Book>(this.attach_Books), new Action<Book>(this.detach_Books));
+			this._Book1s = new EntitySet<Book1>(new Action<Book1>(this.attach_Book1s), new Action<Book1>(this.detach_Book1s));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Theme1_Book", Storage="_Books", ThisKey="Id", OtherKey="Id_Themes")]
+		public EntitySet<Book> Books
+		{
+			get
+			{
+				return this._Books;
+			}
+			set
+			{
+				this._Books.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Theme1_Book1", Storage="_Book1s", ThisKey="Id", OtherKey="Id_Themes")]
+		public EntitySet<Book1> Book1s
+		{
+			get
+			{
+				return this._Book1s;
+			}
+			set
+			{
+				this._Book1s.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Books(Book entity)
+		{
+			this.SendPropertyChanging();
+			entity.Theme1 = this;
+		}
+		
+		private void detach_Books(Book entity)
+		{
+			this.SendPropertyChanging();
+			entity.Theme1 = null;
+		}
+		
+		private void attach_Book1s(Book1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Theme1 = this;
+		}
+		
+		private void detach_Book1s(Book1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Theme1 = null;
 		}
 	}
 }

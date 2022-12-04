@@ -43,7 +43,16 @@ namespace BookLibrary_ADONET.DataAccess
 
         public void UpdateData(Book data)
         {
-            throw new NotImplementedException();
+            var item = _dataContext.Books.SingleOrDefault(b => b.Id == data.Id);
+            item = new Book
+            {
+                Id = data.Id,
+                Name = data.Name,
+                Pages= data.Pages,
+                Quantity=data.Quantity
+            };
+
+            _dataContext.SubmitChanges();
         }
     }
 }

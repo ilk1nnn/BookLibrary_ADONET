@@ -66,10 +66,14 @@
     </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\DeleteBookViewModel.cs" />
+    <Compile Include="ViewModels\InsertBookViewModel.cs" />
     <Compile Include="ViewModels\LibrarianWindowViewModel.cs" />
     <Compile Include="ViewModels\ShowAllBooksViewModel.cs" />
     <Compile Include="Views\DeleteBookWindow.xaml.cs">
       <DependentUpon>DeleteBookWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InsertNewBookWindow.xaml.cs">
+      <DependentUpon>InsertNewBookWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ShowAllBooksWindow.xaml.cs">
       <DependentUpon>ShowAllBooksWindow.xaml</DependentUpon>
@@ -78,6 +82,10 @@
       <DependentUpon>StudentWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\DeleteBookWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InsertNewBookWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

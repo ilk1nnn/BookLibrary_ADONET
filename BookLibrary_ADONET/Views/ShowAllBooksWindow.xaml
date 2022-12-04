@@ -38,10 +38,10 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="BookPrice" Width="100">
+                    <GridViewColumn Header="BookPages" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock FontSize="18" HorizontalAlignment="Center" Padding="5,2" Text="{Binding Price}"></TextBlock>
+                                <TextBlock FontSize="18" HorizontalAlignment="Center" Padding="5,2" Text="{Binding Pages}"></TextBlock>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

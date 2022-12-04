@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Library" Class="LibraryDbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=STHQ011A-02;Initial Catalog=Library;User ID=admin;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False" SettingsObjectName="BookLibrary_ADONET.Properties.Settings" SettingsPropertyName="LibraryConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=MY_ASUS;Initial Catalog=Library;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False" SettingsObjectName="BookLibrary_ADONET.Properties.Settings" SettingsPropertyName="LibraryConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Authors" Member="Authors">
     <Type Name="Author">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="FirstName" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
       <Column Name="LastName" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
       <Association Name="Author_Book" Member="Books" ThisKey="Id" OtherKey="Id_Author" Type="Book" />
+      <Association Name="Author_Book1" Member="Book1s" ThisKey="Id" OtherKey="Id_Author" Type="Book1" />
     </Type>
   </Table>
   <Table Name="dbo.Books" Member="Books">
@@ -22,10 +23,16 @@
       <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Book_S_Card" Member="S_Cards" ThisKey="Id" OtherKey="Id_Book" Type="S_Card" />
       <Association Name="Book_T_Card" Member="T_Cards" ThisKey="Id" OtherKey="Id_Book" Type="T_Card" />
+      <Association Name="Book_S_Card1" Member="S_Card1s" ThisKey="Id" OtherKey="Id_Book" Type="S_Card1" />
+      <Association Name="Book_T_Card1" Member="T_Card1s" ThisKey="Id" OtherKey="Id_Book" Type="T_Card1" />
       <Association Name="Author_Book" Member="Author" ThisKey="Id_Author" OtherKey="Id" Type="Author" IsForeignKey="true" />
       <Association Name="Category_Book" Member="Category" ThisKey="Id_Category" OtherKey="Id" Type="Category" IsForeignKey="true" />
       <Association Name="Press_Book" Member="Press" ThisKey="Id_Press" OtherKey="Id" Type="Press" IsForeignKey="true" />
       <Association Name="Theme_Book" Member="Theme" ThisKey="Id_Themes" OtherKey="Id" Type="Theme" IsForeignKey="true" />
+      <Association Name="Author1_Book" Member="Author1" ThisKey="Id_Author" OtherKey="Id" Type="Author1" IsForeignKey="true" />
+      <Association Name="Category1_Book" Member="Category1" ThisKey="Id_Category" OtherKey="Id" Type="Category1" IsForeignKey="true" />
+      <Association Name="Press1_Book" Member="Press1" ThisKey="Id_Press" OtherKey="Id" Type="Press1" IsForeignKey="true" />
+      <Association Name="Theme1_Book" Member="Theme1" ThisKey="Id_Themes" OtherKey="Id" Type="Theme1" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Categories" Member="Categories">
@@ -33,6 +40,7 @@
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
       <Association Name="Category_Book" Member="Books" ThisKey="Id" OtherKey="Id_Category" Type="Book" />
+      <Association Name="Category_Book1" Member="Book1s" ThisKey="Id" OtherKey="Id_Category" Type="Book1" />
     </Type>
   </Table>
   <Table Name="dbo.Departments" Member="Departments">
@@ -40,6 +48,7 @@
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
       <Association Name="Department_Teacher" Member="Teachers" ThisKey="Id" OtherKey="Id_Dep" Type="Teacher" />
+      <Association Name="Department_Teacher1" Member="Teacher1s" ThisKey="Id" OtherKey="Id_Dep" Type="Teacher1" />
     </Type>
   </Table>
   <Table Name="dbo.Faculties" Member="Faculties">
@@ -47,6 +56,7 @@
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
       <Association Name="Faculty_Group" Member="Groups" ThisKey="Id" OtherKey="Id_Faculty" Type="Group" />
+      <Association Name="Faculty_Group1" Member="Group1s" ThisKey="Id" OtherKey="Id_Faculty" Type="Group1" />
     </Type>
   </Table>
   <Table Name="dbo.Groups" Member="Groups">
@@ -55,7 +65,9 @@
       <Column Name="Name" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="Id_Faculty" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Group_Student" Member="Students" ThisKey="Id" OtherKey="Id_Group" Type="Student" />
+      <Association Name="Group_Student1" Member="Student1s" ThisKey="Id" OtherKey="Id_Group" Type="Student1" />
       <Association Name="Faculty_Group" Member="Faculty" ThisKey="Id_Faculty" OtherKey="Id" Type="Faculty" IsForeignKey="true" />
+      <Association Name="Faculty1_Group" Member="Faculty1" ThisKey="Id_Faculty" OtherKey="Id" Type="Faculty1" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Libs" Member="Libs">
@@ -65,6 +77,8 @@
       <Column Name="LastName" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
       <Association Name="Lib_S_Card" Member="S_Cards" ThisKey="Id" OtherKey="Id_Lib" Type="S_Card" />
       <Association Name="Lib_T_Card" Member="T_Cards" ThisKey="Id" OtherKey="Id_Lib" Type="T_Card" />
+      <Association Name="Lib_S_Card1" Member="S_Card1s" ThisKey="Id" OtherKey="Id_Lib" Type="S_Card1" />
+      <Association Name="Lib_T_Card1" Member="T_Card1s" ThisKey="Id" OtherKey="Id_Lib" Type="T_Card1" />
     </Type>
   </Table>
   <Table Name="dbo.Press" Member="Presses">
@@ -72,6 +86,7 @@
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
       <Association Name="Press_Book" Member="Books" ThisKey="Id" OtherKey="Id_Press" Type="Book" />
+      <Association Name="Press_Book1" Member="Book1s" ThisKey="Id" OtherKey="Id_Press" Type="Book1" />
     </Type>
   </Table>
   <Table Name="dbo.S_Cards" Member="S_Cards">
@@ -85,6 +100,9 @@
       <Association Name="Book_S_Card" Member="Book" ThisKey="Id_Book" OtherKey="Id" Type="Book" IsForeignKey="true" />
       <Association Name="Lib_S_Card" Member="Lib" ThisKey="Id_Lib" OtherKey="Id" Type="Lib" IsForeignKey="true" />
       <Association Name="Student_S_Card" Member="Student" ThisKey="Id_Student" OtherKey="Id" Type="Student" IsForeignKey="true" />
+      <Association Name="Book1_S_Card" Member="Book1" ThisKey="Id_Book" OtherKey="Id" Type="Book1" IsForeignKey="true" />
+      <Association Name="Lib1_S_Card" Member="Lib1" ThisKey="Id_Lib" OtherKey="Id" Type="Lib1" IsForeignKey="true" />
+      <Association Name="Student1_S_Card" Member="Student1" ThisKey="Id_Student" OtherKey="Id" Type="Student1" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Students" Member="Students">
@@ -95,7 +113,9 @@
       <Column Name="Id_Group" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Term" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Student_S_Card" Member="S_Cards" ThisKey="Id" OtherKey="Id_Student" Type="S_Card" />
+      <Association Name="Student_S_Card1" Member="S_Card1s" ThisKey="Id" OtherKey="Id_Student" Type="S_Card1" />
       <Association Name="Group_Student" Member="Group" ThisKey="Id_Group" OtherKey="Id" Type="Group" IsForeignKey="true" />
+      <Association Name="Group1_Student" Member="Group1" ThisKey="Id_Group" OtherKey="Id" Type="Group1" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.T_Cards" Member="T_Cards">
@@ -109,6 +129,9 @@
       <Association Name="Book_T_Card" Member="Book" ThisKey="Id_Book" OtherKey="Id" Type="Book" IsForeignKey="true" />
       <Association Name="Lib_T_Card" Member="Lib" ThisKey="Id_Lib" OtherKey="Id" Type="Lib" IsForeignKey="true" />
       <Association Name="Teacher_T_Card" Member="Teacher" ThisKey="Id_Teacher" OtherKey="Id" Type="Teacher" IsForeignKey="true" />
+      <Association Name="Book1_T_Card" Member="Book1" ThisKey="Id_Book" OtherKey="Id" Type="Book1" IsForeignKey="true" />
+      <Association Name="Lib1_T_Card" Member="Lib1" ThisKey="Id_Lib" OtherKey="Id" Type="Lib1" IsForeignKey="true" />
+      <Association Name="Teacher1_T_Card" Member="Teacher1" ThisKey="Id_Teacher" OtherKey="Id" Type="Teacher1" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Teachers" Member="Teachers">
@@ -118,7 +141,9 @@
       <Column Name="LastName" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
       <Column Name="Id_Dep" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Teacher_T_Card" Member="T_Cards" ThisKey="Id" OtherKey="Id_Teacher" Type="T_Card" />
+      <Association Name="Teacher_T_Card1" Member="T_Card1s" ThisKey="Id" OtherKey="Id_Teacher" Type="T_Card1" />
       <Association Name="Department_Teacher" Member="Department" ThisKey="Id_Dep" OtherKey="Id" Type="Department" IsForeignKey="true" />
+      <Association Name="Department1_Teacher" Member="Department1" ThisKey="Id_Dep" OtherKey="Id" Type="Department1" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Themes" Member="Themes">
@@ -126,6 +151,161 @@
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
       <Association Name="Theme_Book" Member="Books" ThisKey="Id" OtherKey="Id_Themes" Type="Book" />
+      <Association Name="Theme_Book1" Member="Book1s" ThisKey="Id" OtherKey="Id_Themes" Type="Book1" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Authors" Member="Author1s">
+    <Type Name="Author1">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Association Name="Author1_Book" Member="Books" ThisKey="Id" OtherKey="Id_Author" Type="Book" />
+      <Association Name="Author1_Book1" Member="Book1s" ThisKey="Id" OtherKey="Id_Author" Type="Book1" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Books" Member="Book1s">
+    <Type Name="Book1">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Pages" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="YearPress" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Id_Themes" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Id_Category" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Id_Author" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Id_Press" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Book1_S_Card" Member="S_Cards" ThisKey="Id" OtherKey="Id_Book" Type="S_Card" />
+      <Association Name="Book1_T_Card" Member="T_Cards" ThisKey="Id" OtherKey="Id_Book" Type="T_Card" />
+      <Association Name="Book1_S_Card1" Member="S_Card1s" ThisKey="Id" OtherKey="Id_Book" Type="S_Card1" />
+      <Association Name="Book1_T_Card1" Member="T_Card1s" ThisKey="Id" OtherKey="Id_Book" Type="T_Card1" />
+      <Association Name="Author_Book1" Member="Author" ThisKey="Id_Author" OtherKey="Id" Type="Author" IsForeignKey="true" />
+      <Association Name="Author1_Book1" Member="Author1" ThisKey="Id_Author" OtherKey="Id" Type="Author1" IsForeignKey="true" />
+      <Association Name="Category_Book1" Member="Category" ThisKey="Id_Category" OtherKey="Id" Type="Category" IsForeignKey="true" />
+      <Association Name="Press_Book1" Member="Press" ThisKey="Id_Press" OtherKey="Id" Type="Press" IsForeignKey="true" />
+      <Association Name="Theme_Book1" Member="Theme" ThisKey="Id_Themes" OtherKey="Id" Type="Theme" IsForeignKey="true" />
+      <Association Name="Category1_Book1" Member="Category1" ThisKey="Id_Category" OtherKey="Id" Type="Category1" IsForeignKey="true" />
+      <Association Name="Press1_Book1" Member="Press1" ThisKey="Id_Press" OtherKey="Id" Type="Press1" IsForeignKey="true" />
+      <Association Name="Theme1_Book1" Member="Theme1" ThisKey="Id_Themes" OtherKey="Id" Type="Theme1" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Categories" Member="Category1s">
+    <Type Name="Category1">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="Category1_Book" Member="Books" ThisKey="Id" OtherKey="Id_Category" Type="Book" />
+      <Association Name="Category1_Book1" Member="Book1s" ThisKey="Id" OtherKey="Id_Category" Type="Book1" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Departments" Member="Department1s">
+    <Type Name="Department1">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Association Name="Department1_Teacher" Member="Teachers" ThisKey="Id" OtherKey="Id_Dep" Type="Teacher" />
+      <Association Name="Department1_Teacher1" Member="Teacher1s" ThisKey="Id" OtherKey="Id_Dep" Type="Teacher1" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Faculties" Member="Faculty1s">
+    <Type Name="Faculty1">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="Faculty1_Group" Member="Groups" ThisKey="Id" OtherKey="Id_Faculty" Type="Group" />
+      <Association Name="Faculty1_Group1" Member="Group1s" ThisKey="Id" OtherKey="Id_Faculty" Type="Group1" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Groups" Member="Group1s">
+    <Type Name="Group1">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Id_Faculty" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Group1_Student" Member="Students" ThisKey="Id" OtherKey="Id_Group" Type="Student" />
+      <Association Name="Group1_Student1" Member="Student1s" ThisKey="Id" OtherKey="Id_Group" Type="Student1" />
+      <Association Name="Faculty_Group1" Member="Faculty" ThisKey="Id_Faculty" OtherKey="Id" Type="Faculty" IsForeignKey="true" />
+      <Association Name="Faculty1_Group1" Member="Faculty1" ThisKey="Id_Faculty" OtherKey="Id" Type="Faculty1" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Libs" Member="Lib1s">
+    <Type Name="Lib1">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Association Name="Lib1_S_Card" Member="S_Cards" ThisKey="Id" OtherKey="Id_Lib" Type="S_Card" />
+      <Association Name="Lib1_T_Card" Member="T_Cards" ThisKey="Id" OtherKey="Id_Lib" Type="T_Card" />
+      <Association Name="Lib1_S_Card1" Member="S_Card1s" ThisKey="Id" OtherKey="Id_Lib" Type="S_Card1" />
+      <Association Name="Lib1_T_Card1" Member="T_Card1s" ThisKey="Id" OtherKey="Id_Lib" Type="T_Card1" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Press" Member="Press1s">
+    <Type Name="Press1">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="Press1_Book" Member="Books" ThisKey="Id" OtherKey="Id_Press" Type="Book" />
+      <Association Name="Press1_Book1" Member="Book1s" ThisKey="Id" OtherKey="Id_Press" Type="Book1" />
+    </Type>
+  </Table>
+  <Table Name="dbo.S_Cards" Member="S_Card1s">
+    <Type Name="S_Card1">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Id_Student" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Id_Book" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DateOut" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DateIn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Id_Lib" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Book_S_Card1" Member="Book" ThisKey="Id_Book" OtherKey="Id" Type="Book" IsForeignKey="true" />
+      <Association Name="Book1_S_Card1" Member="Book1" ThisKey="Id_Book" OtherKey="Id" Type="Book1" IsForeignKey="true" />
+      <Association Name="Lib_S_Card1" Member="Lib" ThisKey="Id_Lib" OtherKey="Id" Type="Lib" IsForeignKey="true" />
+      <Association Name="Lib1_S_Card1" Member="Lib1" ThisKey="Id_Lib" OtherKey="Id" Type="Lib1" IsForeignKey="true" />
+      <Association Name="Student_S_Card1" Member="Student" ThisKey="Id_Student" OtherKey="Id" Type="Student" IsForeignKey="true" />
+      <Association Name="Student1_S_Card1" Member="Student1" ThisKey="Id_Student" OtherKey="Id" Type="Student1" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Students" Member="Student1s">
+    <Type Name="Student1">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="Id_Group" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Term" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Student1_S_Card" Member="S_Cards" ThisKey="Id" OtherKey="Id_Student" Type="S_Card" />
+      <Association Name="Student1_S_Card1" Member="S_Card1s" ThisKey="Id" OtherKey="Id_Student" Type="S_Card1" />
+      <Association Name="Group_Student1" Member="Group" ThisKey="Id_Group" OtherKey="Id" Type="Group" IsForeignKey="true" />
+      <Association Name="Group1_Student1" Member="Group1" ThisKey="Id_Group" OtherKey="Id" Type="Group1" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.T_Cards" Member="T_Card1s">
+    <Type Name="T_Card1">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Id_Teacher" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Id_Book" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DateOut" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DateIn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Id_Lib" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Book_T_Card1" Member="Book" ThisKey="Id_Book" OtherKey="Id" Type="Book" IsForeignKey="true" />
+      <Association Name="Book1_T_Card1" Member="Book1" ThisKey="Id_Book" OtherKey="Id" Type="Book1" IsForeignKey="true" />
+      <Association Name="Lib_T_Card1" Member="Lib" ThisKey="Id_Lib" OtherKey="Id" Type="Lib" IsForeignKey="true" />
+      <Association Name="Lib1_T_Card1" Member="Lib1" ThisKey="Id_Lib" OtherKey="Id" Type="Lib1" IsForeignKey="true" />
+      <Association Name="Teacher_T_Card1" Member="Teacher" ThisKey="Id_Teacher" OtherKey="Id" Type="Teacher" IsForeignKey="true" />
+      <Association Name="Teacher1_T_Card1" Member="Teacher1" ThisKey="Id_Teacher" OtherKey="Id" Type="Teacher1" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Teachers" Member="Teacher1s">
+    <Type Name="Teacher1">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="Id_Dep" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Teacher1_T_Card" Member="T_Cards" ThisKey="Id" OtherKey="Id_Teacher" Type="T_Card" />
+      <Association Name="Teacher1_T_Card1" Member="T_Card1s" ThisKey="Id" OtherKey="Id_Teacher" Type="T_Card1" />
+      <Association Name="Department_Teacher1" Member="Department" ThisKey="Id_Dep" OtherKey="Id" Type="Department" IsForeignKey="true" />
+      <Association Name="Department1_Teacher1" Member="Department1" ThisKey="Id_Dep" OtherKey="Id" Type="Department1" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Themes" Member="Theme1s">
+    <Type Name="Theme1">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="Theme1_Book" Member="Books" ThisKey="Id" OtherKey="Id_Themes" Type="Book" />
+      <Association Name="Theme1_Book1" Member="Book1s" ThisKey="Id" OtherKey="Id_Themes" Type="Book1" />
     </Type>
   </Table>
 </Database>

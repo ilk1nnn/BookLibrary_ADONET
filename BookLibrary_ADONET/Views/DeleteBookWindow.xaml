@@ -52,8 +52,8 @@
         </Rectangle>
         <StackPanel Orientation="Horizontal" Height="70">
             <TextBlock Text="Enter Book ID : " Foreground="Black" FontSize="40" Margin="120,0,0,0"></TextBlock>
-            <TextBox Height="35" Margin="0,0,0,8" Width="120"></TextBox>
-            <Button Style="{StaticResource MyButton}" Background="Black" Foreground="White" Height="35" Margin="20,0,0,8" Width="90" Content = "Delete" FontSize="25"></Button>
+            <TextBox FontSize="20" Name="IdTxtb" Height="35" Margin="0,0,0,8" Width="120"></TextBox>
+            <Button Command="{Binding DeleteCommand}" Style="{StaticResource MyButton}" Background="Black" Foreground="White" Height="35" Margin="20,0,0,8" Width="90" Content = "Delete" FontSize="25"></Button>
         </StackPanel>
     </Grid>
 </Window>

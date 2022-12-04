@@ -26,7 +26,12 @@ namespace BookLibrary_ADONET.ViewModels
                 libwindow.Close();
             });
 
-
+            DeleteBookCommand = new RelayCommand(d =>
+            {
+                var deletebook = new DeleteBookWindow();
+                deletebook.Show();
+                libwindow.Close();
+            });
 
         }
 

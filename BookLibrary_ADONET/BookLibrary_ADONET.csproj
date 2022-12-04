@@ -65,6 +65,7 @@
       <DependentUpon>LibraryDb.dbml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\DeleteBookViewModel.cs" />
     <Compile Include="ViewModels\LibrarianWindowViewModel.cs" />
     <Compile Include="ViewModels\ShowAllBooksViewModel.cs" />
     <Compile Include="Views\DeleteBookWindow.xaml.cs">

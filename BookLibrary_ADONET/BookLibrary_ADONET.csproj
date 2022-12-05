@@ -69,6 +69,7 @@
     <Compile Include="ViewModels\InsertBookViewModel.cs" />
     <Compile Include="ViewModels\LibrarianWindowViewModel.cs" />
     <Compile Include="ViewModels\ShowAllBooksViewModel.cs" />
+    <Compile Include="ViewModels\StudentWindowViewModel.cs" />
     <Compile Include="Views\DeleteBookWindow.xaml.cs">
       <DependentUpon>DeleteBookWindow.xaml</DependentUpon>
     </Compile>

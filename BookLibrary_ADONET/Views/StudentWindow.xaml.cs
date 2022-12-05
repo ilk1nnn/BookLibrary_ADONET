@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BookLibrary_ADONET.DataAccess;
+using BookLibrary_ADONET.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,9 @@ namespace BookLibrary_ADONET.Views
         public StudentWindow()
         {
             InitializeComponent();
+            var bookRepo = new BookRepository();
+            var vm = new StudentWindowViewModel(bookRepo);
+            this.DataContext = vm;
         }
     }
 }

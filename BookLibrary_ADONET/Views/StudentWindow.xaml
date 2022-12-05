@@ -50,7 +50,7 @@
         </Rectangle>
         <StackPanel>
             <StackPanel Orientation="Vertical">
-                <Button  BorderThickness="0" FontSize="30" Margin="0,200,0,0" Width="300" FontWeight="ExtraBlack" Foreground="White" Background="Black" Style="{StaticResource MyButton}" Content="Show All Books"></Button>
+                <Button  Command="{Binding ShowAllCommand}" BorderThickness="0" FontSize="30" Margin="0,200,0,0" Width="300" FontWeight="ExtraBlack" Foreground="White" Background="Black" Style="{StaticResource MyButton}" Content="Show All Books"></Button>
             </StackPanel>
         </StackPanel>
     </Grid>

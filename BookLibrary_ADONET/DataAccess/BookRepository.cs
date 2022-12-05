@@ -49,9 +49,15 @@ namespace BookLibrary_ADONET.DataAccess
                 Id = data.Id,
                 Name = data.Name,
                 Pages= data.Pages,
-                Quantity=data.Quantity
+                Quantity=data.Quantity,
+                Id_Themes=data.Id_Themes,
+                Id_Category=data.Id_Category,
+                Id_Author=data.Id_Author,
+                YearPress=data.YearPress,
+                Comment=data.Comment,
+                Id_Press=data.Id_Press
             };
-
+            data = item;
             _dataContext.SubmitChanges();
         }
     }

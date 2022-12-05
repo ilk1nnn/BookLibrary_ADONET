@@ -1,4 +1,5 @@
-﻿using BookLibrary_ADONET.ViewModels;
+﻿using BookLibrary_ADONET.DataAccess;
+using BookLibrary_ADONET.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,8 @@ namespace BookLibrary_ADONET.Views
         public LibrarianWindow()
         {
             InitializeComponent();
-            var mw = new LibrarianWindowViewModel();
+            var bookRepo = new BookRepository();
+            var mw = new LibrarianWindowViewModel(bookRepo);
             mw.libwindow = this;
             this.DataContext = mw;
         }
